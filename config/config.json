@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "AH3althycomputer1!",
-    "database": "passport_demo",
+    "database": "business_inventory",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
