@@ -8,9 +8,7 @@
     "start": "node server.js",
     "lint": "eslint --quiet .",
     "fix": "eslint --fix .",
-    "server-prod": "node server.js",
-    "server": "nodemon server.js",
-    "start:dev": "concurrently --kill-others  \"npm run server\" "
+    "watch": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
