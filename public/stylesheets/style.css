@@ -12,18 +12,18 @@ form.login {
 
 #mainContainer {
     max-width: 60%;
-    background-color: #c3c3c3;
+    background-color: #dfd9d9;
 }
 
 #navContainer, footer{
     padding: 5px 10px;
-    background-color: #c3c3c3;
+    background-color: #dfd9d9;
     max-width: 100%;
 }
 
 
 #footerContainer, #bodyContainer{
-    background-color:#c3c3c3;
+    background-color:#dfd9d9;
     max-width: 100%;
     text-align: center;
 }
@@ -31,10 +31,20 @@ form.login {
 
 #navContainer, footer, .navbar{
     padding: 5px 10px;
-    background-color: #c3c3c3;
+    background-color: #dfd9d9;
     max-width: 100%;
 }
 
+
+.icon {
+    display: inline-block;
+    width: 100px;
+    padding: 20px 20px;
+}
+
+.form-inline {
+    margin-right: auto;
+}
 
 #inventory-table {
   padding-top: 100px;
@@ -71,7 +81,7 @@ hr.rounded {
 }
 
 #footerContainer, #bodyContainer, #homeContainer {
-    background-color:#c3c3c3;
+    background-color:#dfd9d9;
     max-width: 100%;
     text-align: center;
 }
