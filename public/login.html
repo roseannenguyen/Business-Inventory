@@ -2,24 +2,35 @@
 <html lang="en">
 
 <head>
-  <title>Passport Authentication</title>
+  <title>Business Inventory Login</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link href="stylesheets/style.css" rel="stylesheet">
 </head>
 
 <body>
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
+
+  <nav class="nav">
+    <div class="navbar navbar-expand-lg navbar-custom fixed-top">
+      <div class="container">
+        <div class="logo">
+          <a class="navbar-brand">Business Inventory Creator</a>
+        </div>
       </div>
     </div>
   </nav>
+
   <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h2>Login Form</h2>
+
+    <div class="row align-items-center my-5">
+      <div class="col-lg-7">
+        <img class="img-fluid rounded mb-4 mb-lg-0" src="/" alt="LoginBusiness Photo">
+      </div>
+
+      <div id="login-form" class="col-lg-5">
+        <h1 class="font-weight-light">Login Form</h1>
         <form class="login">
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
@@ -34,7 +45,10 @@
         <br />
         <p>Or sign up <a href="/">here</a></p>
       </div>
+
     </div>
+
+
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

@@ -16,7 +16,7 @@ app.use(express.static("public"));
 // We need to use sessions to keep track of our user's login status
 // NEED ENVIRONMENT VARIABLE TO PROTECT THE CODE 
 app.use(
-  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
+  session({ secret: "funky business", resave: true, saveUninitialized: true })
 );
 app.use(passport.initialize());
 app.use(passport.session());
