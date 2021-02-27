@@ -12,9 +12,11 @@ $(document).ready(() => {
     $(this).attr("disabled", "disabled");
     var index = $("table tbody tr:last-child").index();
     var row = '<tr>' +
-      '<td><input type="text" class="form-control" name="name" id="name"></td>' +
-      '<td><input type="text" class="form-control" name="department" id="department"></td>' +
-      '<td><input type="text" class="form-control" name="phone" id="phone"></td>' + '<td><input type="text" class="form-control" name="phone" id="phone"></td>' + '<td><input type="text" class="form-control" name="phone" id="phone"></td>' +
+      '<td><input type="text" class="form-control" name="main-id" id="main-id"></td>' +
+      '<td><input type="text" class="form-control" name="item" id="item"></td>' +
+      '<td><input type="text" class="form-control" name="quantity" id="quantity"></td>' + 
+      '<td><input type="text" class="form-control" name="price" id="price"></td>' + 
+      '<td><input type="text" class="form-control" name="description" id="description"></td>' +
       '<td>' + actions + '</td>' +
       '</tr>';
     $("table").append(row);
