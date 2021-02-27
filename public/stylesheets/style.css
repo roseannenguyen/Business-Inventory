@@ -35,7 +35,6 @@ form.login {
     max-width: 100%;
 }
 
-<<<<<<< HEAD
 .jumbotron {
 
     padding-bottom: 20px; 
@@ -45,8 +44,6 @@ form.login {
       background-color: #CFCFC4 ;
       color: black;
   }
-=======
->>>>>>> 6640c9a8151f4c45c13fa29b8be6fabe2cc2b45f
 
 .icon {
     display: inline-block;
@@ -123,7 +120,7 @@ textarea {
 -moz-box-sizing: border-box; 
 box-sizing: border-box;	 
 width: 100%;
-
+}
 
 .nav-link, .form-inline {
     font-family: 'Lobster', cursive;
