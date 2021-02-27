@@ -15,7 +15,7 @@ $(document).ready(function () {
     var item = $('input[name=item]').val();
     var quantity = $('input[name=quantity]').val();
     var price = $('input[name=price]').val();
-    var description = $('input[name=description]').val();
+    var body = $('input[name=body]').val();
 
     var tr = "<tr>\
                     <td>\
@@ -30,7 +30,7 @@ $(document).ready(function () {
                     \
                     <td>\
 <button type=\"button\" class=\"close\"><span aria-hidden=\"true\">&times;</span><span class=\"sr-only\">Close</span></button>\
-<textarea placeholder=\"Optional Description of Item\">" + description + "</textarea>\
+<textarea placeholder=\"Optional Description of Item\">" + body + "</textarea>\
                     </td>\
                 </tr>;";
     $('#table tbody').append(tr);
