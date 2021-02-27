@@ -1,8 +1,8 @@
 // This file just does a GET request to figure out which user is logged in
-  // and updates the HTML on the page
-  // $.get("/api/user_data").then(data => {
-  //   $(".member-name").text(data.email);
-  // });
+// and updates the HTML on the page
+// $.get("/api/user_data").then(data => {
+//   $(".member-name").text(data.email);
+// });
 
 $(document).ready(function () {
 
@@ -22,15 +22,17 @@ $(document).ready(function () {
                      <h2> " + item + "</h2>\
                     </td>\
                   <td>\
-                                    <h2> " + quantity+ "</h2>\
+                                    <h2> " + quantity + "</h2>\
                     </td>\
                     <td>\
                                     <h2> $" + price + "</h2>\
                     </td>\
                     \
                     <td>\
-                       <button type=\"button\" class=\"close\"><span aria-hidden=\"true\">&times;</span><span class=\"sr-only\">Close</span></button>\
-                        <textarea placeholder=\"Optional Description of Item\">" + description + "</textarea>\
+                    <button class=\"edit\" title=\"Edit\" data-toggle=\"tooltip\"><i class=\"material-icons\">"+"</i></button>\
+     <button class=\"delete\" title=\"Delete\" data-toggle=\"tooltip\"> <i class=\"material-icons\">"+"</i></button>\
+<button type=\"button\" class=\"close\"><span aria-hidden=\"true\">&times;</span><span class=\"sr-only\">Close</span></button>\
+<textarea placeholder=\"Optional Description of Item\">" + description + "</textarea>\
                     </td>\
                 </tr>;";
     $('#table tbody').append(tr);
