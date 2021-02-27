@@ -34,55 +34,52 @@
 
 
   <div id="inventory-table" class="container">
-    <div class="row">
-      <div class="col-lg-8">
-        <h2> Add Your Business Inventory</h2>
-      </div>
+
+    <div class="row align-items-center">
       <div class="col-4">
-        <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
+        <div id="left">
+          <h2 id="add"> Track Your Inventory</h2>
+          <form class="input">
+            Item Name: <input type="text" id="item" name="item" required><br>
+            Quantity: <input type="number" id="quantity" name="quantity" required><br>
+            Price: <input type="number" id="price" name="price"><br>
+            Description: <input type="text" id="description" name="description"><br>
+            <input type="button" value="Add" id="submit" />
+          </form>
+        </div>
+      </div>
+
+      <div class="col-8">
+        <div id="table">
+          <table class="table table-bordered table table-hover">
+            <thead>
+              </thead>
+              <tbody>
+              <tr>
+                <!-- <th id="main-id">ID</th> -->
+                <th id="item">Item</th>
+                <th id="quantity">Quantity</th>
+                <th id="price">Price</th>
+                <th id="description">Description</th>
+              </tr>
+            
+           
+           
+<!--           
+                  <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons"></i></a>
+                  <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons"></i></a>
+>
+ -->
+
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-
-    <div class="row align-items-center my-5">
-      <div class="col-lg-12">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th id="main-id">ID</th>
-              <th id="item">Item</th>
-              <th id="quantity">Quantity</th>
-              <th id="price">Price</th>
-              <th id="description">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>
-                <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons"></i></a>
-                <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons"></i></a>
-                <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons"></i></a>
-              </td>
-            </tr>
-
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
+</div>
 
 
-
-
-
-
-
-
-
+   
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
