@@ -33,11 +33,6 @@ form.login {
 
 }
 
-html {
-  /* for demo purposes only */
-  margin: 2em;
-}
-
 input[type="text"],
 select.form-control {
   background: transparent;
