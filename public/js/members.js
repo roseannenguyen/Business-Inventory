@@ -29,8 +29,6 @@ $(document).ready(function () {
                     </td>\
                     \
                     <td>\
-                    <button class=\"edit\" title=\"Edit\" data-toggle=\"tooltip\"><i class=\"material-icons\">"+"</i></button>\
-     <button class=\"delete\" title=\"Delete\" data-toggle=\"tooltip\"> <i class=\"material-icons\">"+"</i></button>\
 <button type=\"button\" class=\"close\"><span aria-hidden=\"true\">&times;</span><span class=\"sr-only\">Close</span></button>\
 <textarea placeholder=\"Optional Description of Item\">" + description + "</textarea>\
                     </td>\
