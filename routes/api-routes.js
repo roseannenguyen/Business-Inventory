@@ -50,4 +50,40 @@ module.exports = function(app) {
       });
     }
   });
+
+  app.get("/api/items", function(req,res) {
+    var query = {};
+    if (req.query.user_id) {
+      query.UserId = req.query.user_id;
+    }
+  
+  db.Item.findAll({
+    where: query,
+    include: [db.User]
+  }).then(function(dbItem) {
+    res.json(dbItem)
+  });
+  });
+  
+  app.post("/api/items", async(req, res) => {
+    db.Item.create({
+      name: req.body.name,
+      quantity: req.body.quantity,
+      price: req.body.price,
+      body: req.body.body,
+    });
+    db.Inventory.create({
+      userId: db.User.id,
+      itemId: this.Item.id
+    })
+    // const { name, quantity, price, body, UserId } = req.body
+
+    // try{
+    //   const item = await db.Item.create({ name, quantity, price, body, UserId })
+    //   return res.json(item) 
+    // }catch(err){
+    //   console.log(err)
+    // }
+  })
 };
+
