@@ -30,7 +30,6 @@ form.login {
 
 
 #navContainer, footer, .navbar{
-    padding: 5px 10px;
     background-color: #dfd9d9;
     max-width: 100%;
 }
@@ -40,15 +39,12 @@ form.login {
     padding-bottom: 20px; 
     text-align: center;
 }
-.navbar-custom {
-      background-color: #CFCFC4 ;
-      color: black;
-  }
+
 
 .icon {
     display: inline-block;
     width: 100px;
-    padding: 20px 20px;
+    text-align: end;
 }
 
 .form-inline {
@@ -59,8 +55,6 @@ form.login {
   /* padding-top: 100px; */
   margin-left: auto;
   margin-right: auto;
- 
-  
 }  
 
 .rounded {
@@ -70,7 +64,6 @@ form.login {
 .bg-custom {
      background-color: #CFCFC4 ;
     color: black;
-    padding: 40px;
 
 }
 
@@ -130,19 +123,17 @@ width: 100%;
 }
 
 .navbar-brand {
-    padding: 10px;
     display: inline-block;
     font-family: 'Calistoga', cursive;
     font-size: 30px;
 }
 
-
+/* 
 .navbar-brand {
     padding: 10px;
     font-size: 30px;
     font-family: 'Lobster', cursive;
-    color: rgb(0, 65, 51);
-}
+} */
 
 hr.rounded {
   border-top: 2px solid #bbb;
@@ -155,3 +146,7 @@ hr.rounded {
     text-align: center;
 }
 
+.brand {
+    display: inline-block;
+    width: 120px;
+}
