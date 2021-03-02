@@ -1,11 +1,15 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
+var userId;
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
+  // app.post("/api/login", passport.authenticate("local"), function(req, res) {
+  //   res.json(req.user);
+  // });
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
     // Sending back a password, even a hashed password, isn't a good idea
     res.json({
@@ -26,6 +30,7 @@ module.exports = function(app) {
         res.redirect(307, "/api/login");
       })
       .catch(err => {
+        console.log(err);
         res.status(401).json(err);
       });
   });
@@ -73,8 +78,8 @@ module.exports = function(app) {
       body: req.body.body,
     });
     db.Inventory.create({
-      userId: db.User.id,
-      itemId: this.Item.id
+      userId: req.user.id,
+      itemId: req.Item.id
     })
     // const { name, quantity, price, body, UserId } = req.body
 
