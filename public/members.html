@@ -21,15 +21,7 @@
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-     
-      <li class="nav-item">
-        <!-- <a class="nav-link" href="#">Link</a> -->
-      </li>
-      <li class="nav-item">
-        <!-- <a class="nav-link disabled" href="#">
-          Fun Link
-        </a> -->
-      </li>
+
       <li class="nav-item active" href="/logout">
         Logout
       </li>
@@ -40,18 +32,7 @@
     </form>
   </div>
 </nav>
-  <!-- <nav class="nav">
-    <div class="navbar navbar-expand-lg navbar-custom fixed-top">
-      <div class="container-fluid">
-        <div class="logo">
-          <a class="navbar-brand">Wecome (Insert Business Name)</a>
-        </div>
-        <a class="navbar-brand" href="/logout">
-          Logout
-        </a>
-      </div>
-    </div>
-  </nav> -->
+
 
   <div class="jumbotron jumbotron-fluid">
     <div class="container-fluid">
@@ -64,9 +45,10 @@
   <div id="inventoryTableContainer" class="row align-items-center">
     <div class="col-md-4">
 
-      <h2 id="add"> Track Your Inventory</h2>
+      
 
       <div class="container-fluid rounded bg-custom">
+        <h2 id="add"> Track Your Inventory</h2>
         <form class="input">
           <label> Item Name: <input type="text" id="item" name="item" size="30"></label>
           <label> Quantity: <input type="number" id="quantity" name="quantity" ></label>
@@ -96,9 +78,13 @@
       </table>
     </div>
   </div>
+<button id="download-btn" class="pure-button">Download PDF</button>
 
 
 
+
+<script src="jspdf.min.js"></script>
+<script src="jspdf.plugin.autotable.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
