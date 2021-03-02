@@ -1,7 +1,10 @@
-body {
+#loginContainer {
     background: url(Background-1.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    /* max-width: 60%; */
+    background-color: #dfd9d9;
+    justify-content: center;
 }
 
 form.signup,
@@ -11,20 +14,20 @@ form.login {
 }
 
 #mainContainer {
-    max-width: 60%;
+    /* max-width: 60%; */
     background-color: #dfd9d9;
 }
 
 #navContainer, footer{
     padding: 5px 10px;
     background-color: #dfd9d9;
-    max-width: 100%;
+    /* max-width: 100%; */
 }
 
 
 #footerContainer, #bodyContainer{
     background-color:#dfd9d9;
-    max-width: 100%;
+    /* max-width: 100%; */
     text-align: center;
 }
 
@@ -32,7 +35,7 @@ form.login {
 #navContainer, footer, .navbar{
     padding: 5px 10px;
     background-color: #dfd9d9;
-    max-width: 100%;
+    /* max-width: 100%; */
 }
 
 .jumbotron {
@@ -55,12 +58,18 @@ form.login {
     margin-right: auto;
 }
 
-#inventory-table {
+#inventoryTableContainer {
   /* padding-top: 100px; */
   margin-left: auto;
   margin-right: auto;
- 
-  
+  background-color: #dfd9d9;
+
+}  
+
+#inventoryTable {
+  padding-top: 300px;
+
+
 }  
 
 .rounded {
@@ -123,7 +132,7 @@ width: 100%;
 }
 
 .nav-link, .form-inline {
-    font-family: 'Lobster', cursive;
+    font-family: 'Avantgarde', sans-serif;
     color: white;
     font-size: 20px;
     display: inline-block;
@@ -132,7 +141,7 @@ width: 100%;
 .navbar-brand {
     padding: 10px;
     display: inline-block;
-    font-family: 'Calistoga', cursive;
+    font-family: 'Avantgarde', sans-serif;
     font-size: 30px;
 }
 
@@ -140,7 +149,7 @@ width: 100%;
 .navbar-brand {
     padding: 10px;
     font-size: 30px;
-    font-family: 'Lobster', cursive;
+    font-family: 'Avantgarde', sans-serif;
     color: rgb(0, 65, 51);
 }
 
