@@ -1,12 +1,12 @@
-#loginContainer {
+ #loginContainer {
+    justify-content: center;
     background: url(Background-1.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    /* max-width: 60%; */
     background-color: #dfd9d9;
-    justify-content: center;
+    
 }
-
+ 
 form.signup,
 form.login {
   margin-top: 20px;
@@ -14,73 +14,19 @@ form.login {
 }
 
 #mainContainer {
-    /* max-width: 60%; */
+ 
     background-color: #dfd9d9;
 }
 
-#navContainer, footer{
-    padding: 5px 10px;
-    background-color: #dfd9d9;
-    /* max-width: 100%; */
-}
 
+#footerContainer {
 
-#footerContainer, #bodyContainer{
-    background-color:#dfd9d9;
-    /* max-width: 100%; */
     text-align: center;
 }
-
 
 #navContainer, footer, .navbar{
-    padding: 5px 10px;
     background-color: #dfd9d9;
-    /* max-width: 100%; */
-}
-
-.jumbotron {
-
-    padding-bottom: 20px; 
-    text-align: center;
-}
-.navbar-custom {
-      background-color: #CFCFC4 ;
-      color: black;
-  }
-
-.icon {
-    display: inline-block;
-    width: 100px;
-    padding: 20px 20px;
-}
-
-.form-inline {
-    margin-right: auto;
-}
-
-#inventoryTableContainer {
-  /* padding-top: 100px; */
-  margin-left: auto;
-  margin-right: auto;
-  background-color: #dfd9d9;
-
-}  
-
-#inventoryTable {
-  padding-top: 300px;
-
-
-}  
-
-.rounded {
-    border-radius:.25rem!important
-}
-
-.bg-custom {
-     background-color: #CFCFC4 ;
-    color: black;
-    padding: 40px;
-
+    max-width: 100%;
 }
 
 input[type="text"],
@@ -115,6 +61,63 @@ select.form-control:focus {
   box-shadow: none;
 }
 
+
+#navContainer, footer{
+    padding: 5px 10px;
+    background-color: #dfd9d9;
+    max-width: 100%;
+}
+
+
+#footerContainer, #bodyContainer{
+    background-color:#dfd9d9;
+    max-width: 100%;
+    text-align: center;
+}
+
+.jumbotron {
+
+    padding-bottom: 20px; 
+    text-align: center;
+}
+
+
+.icon {
+    display: inline-block;
+    width: 100px;
+    text-align: end;
+}
+
+.form-inline {
+    margin-right: auto;
+}
+
+#inventoryTableContainer {
+  padding-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #dfd9d9;
+
+}  
+
+#inventoryTable {
+  padding-top: 300px;
+
+
+}  
+
+.rounded {
+    border-radius:.25rem!important
+}
+
+.bg-custom {
+     background-color: #CFCFC4 ;
+    color: black;
+
+}
+
+
+
 label, input {
     display: block;
     display: flex;
@@ -139,7 +142,6 @@ width: 100%;
 }
 
 .navbar-brand {
-    padding: 10px;
     display: inline-block;
     font-family: 'Avantgarde', sans-serif;
     font-size: 30px;
@@ -158,9 +160,10 @@ hr.rounded {
   border-radius: 1px;
 }
 
-#footerContainer, #bodyContainer, #homeContainer {
-    background-color:#dfd9d9;
-    max-width: 100%;
-    text-align: center;
-}
+
+
+.brand {
+    display: inline-block;
+    width: 120px;
+} 
 
