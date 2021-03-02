@@ -1,9 +1,12 @@
-body {
+ #loginContainer {
+    justify-content: center;
     background: url(Background-1.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    background-color: #dfd9d9;
+    
 }
-
+ 
 form.signup,
 form.login {
   margin-top: 20px;
@@ -11,60 +14,18 @@ form.login {
 }
 
 #mainContainer {
-    max-width: 60%;
+ 
     background-color: #dfd9d9;
 }
 
-#navContainer, footer{
-    padding: 5px 10px;
-    background-color: #dfd9d9;
-    max-width: 100%;
-}
 
-
-#footerContainer, #bodyContainer{
-    background-color:#dfd9d9;
-    max-width: 100%;
+#footerContainer {
     text-align: center;
 }
-
 
 #navContainer, footer, .navbar{
     background-color: #dfd9d9;
     max-width: 100%;
-}
-
-.jumbotron {
-
-    padding-bottom: 20px; 
-    text-align: center;
-}
-
-
-.icon {
-    display: inline-block;
-    width: 100px;
-    text-align: end;
-}
-
-.form-inline {
-    margin-right: auto;
-}
-
-#inventory-table {
-  /* padding-top: 100px; */
-  margin-left: auto;
-  margin-right: auto;
-}  
-
-.rounded {
-    border-radius:.25rem!important
-}
-
-.bg-custom {
-     background-color: #CFCFC4 ;
-    color: black;
-
 }
 
 input[type="text"],
@@ -99,6 +60,63 @@ select.form-control:focus {
   box-shadow: none;
 }
 
+
+#navContainer, footer{
+    padding: 5px 10px;
+    background-color: #dfd9d9;
+    max-width: 100%;
+}
+
+
+#footerContainer, #bodyContainer{
+    background-color:#dfd9d9;
+    max-width: 100%;
+    text-align: center;
+}
+
+.jumbotron {
+
+    padding-bottom: 20px; 
+    text-align: center;
+}
+
+
+.icon {
+    display: inline-block;
+    width: 100px;
+    text-align: end;
+}
+
+.form-inline {
+    margin-right: auto;
+}
+
+#inventoryTableContainer {
+  padding-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #dfd9d9;
+
+}  
+
+#inventoryTable {
+  padding-top: 300px;
+
+
+}  
+
+.rounded {
+    border-radius:.25rem!important
+}
+
+.bg-custom {
+     background-color: #CFCFC4 ;
+    color: black;
+
+}
+
+
+
 label, input {
     display: block;
     display: flex;
@@ -116,7 +134,7 @@ width: 100%;
 }
 
 .nav-link, .form-inline {
-    font-family: 'Lobster', cursive;
+    font-family: 'Avantgarde', sans-serif;
     color: white;
     font-size: 20px;
     display: inline-block;
@@ -124,27 +142,24 @@ width: 100%;
 
 .navbar-brand {
     display: inline-block;
-    font-family: 'Calistoga', cursive;
+    font-family: 'Avantgarde', sans-serif;
     font-size: 30px;
 }
 
-/* 
+
 .navbar-brand {
     padding: 10px;
     font-size: 30px;
-    font-family: 'Lobster', cursive;
-} */
+    font-family: 'Avantgarde', sans-serif;
+    color: rgb(0, 65, 51);
+}
 
 hr.rounded {
   border-top: 2px solid #bbb;
   border-radius: 1px;
 }
 
-#footerContainer, #bodyContainer, #homeContainer {
-    background-color:#dfd9d9;
-    max-width: 100%;
-    text-align: center;
-}
+
 
 .brand {
     display: inline-block;
