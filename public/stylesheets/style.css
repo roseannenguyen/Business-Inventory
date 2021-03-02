@@ -1,4 +1,157 @@
+body {
+    background: url(Background-1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 form.signup,
 form.login {
-  margin-top: 50px;
+  margin-top: 20px;
+  padding-top: 20px;
 }
+
+#mainContainer {
+    max-width: 60%;
+    background-color: #dfd9d9;
+}
+
+#navContainer, footer{
+    padding: 5px 10px;
+    background-color: #dfd9d9;
+    max-width: 100%;
+}
+
+
+#footerContainer, #bodyContainer{
+    background-color:#dfd9d9;
+    max-width: 100%;
+    text-align: center;
+}
+
+
+#navContainer, footer, .navbar{
+    padding: 5px 10px;
+    background-color: #dfd9d9;
+    max-width: 100%;
+}
+
+.jumbotron {
+
+    padding-bottom: 20px; 
+    text-align: center;
+}
+.navbar-custom {
+      background-color: #CFCFC4 ;
+      color: black;
+  }
+
+.icon {
+    display: inline-block;
+    width: 100px;
+    padding: 20px 20px;
+}
+
+.form-inline {
+    margin-right: auto;
+}
+
+#inventory-table {
+  /* padding-top: 100px; */
+  margin-left: auto;
+  margin-right: auto;
+ 
+  
+}  
+
+.rounded {
+    border-radius:.25rem!important
+}
+
+.bg-custom {
+     background-color: #CFCFC4 ;
+    color: black;
+    padding: 40px;
+
+}
+
+input[type="text"],
+select.form-control {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #000000;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+input[type="text"]:focus,
+select.form-control:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+input[type="number"],
+select.form-control {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #000000;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+input[type="number"]:focus,
+select.form-control:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+label, input {
+    display: block;
+    display: flex;
+}
+
+label {
+    margin-bottom: 20px;
+}
+
+textarea {	 
+-webkit-box-sizing: border-box; 
+-moz-box-sizing: border-box; 
+box-sizing: border-box;	 
+width: 100%;
+}
+
+.nav-link, .form-inline {
+    font-family: 'Lobster', cursive;
+    color: white;
+    font-size: 20px;
+    display: inline-block;
+}
+
+.navbar-brand {
+    padding: 10px;
+    display: inline-block;
+    font-family: 'Calistoga', cursive;
+    font-size: 30px;
+}
+
+
+.navbar-brand {
+    padding: 10px;
+    font-size: 30px;
+    font-family: 'Lobster', cursive;
+    color: rgb(0, 65, 51);
+}
+
+hr.rounded {
+  border-top: 2px solid #bbb;
+  border-radius: 1px;
+}
+
+#footerContainer, #bodyContainer, #homeContainer {
+    background-color:#dfd9d9;
+    max-width: 100%;
+    text-align: center;
+}
+

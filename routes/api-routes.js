@@ -1,11 +1,15 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
+var userId;
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
+  // app.post("/api/login", passport.authenticate("local"), function(req, res) {
+  //   res.json(req.user);
+  // });
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
     // Sending back a password, even a hashed password, isn't a good idea
     res.json({
@@ -26,6 +30,7 @@ module.exports = function(app) {
         res.redirect(307, "/api/login");
       })
       .catch(err => {
+        console.log(err);
         res.status(401).json(err);
       });
   });
@@ -50,4 +55,49 @@ module.exports = function(app) {
       });
     }
   });
+
+  app.get("/api/items", function(req,res) {
+    var query = {};
+    if (req.query.user_id) {
+      query.UserId = req.query.user_id;
+    }
+  
+  db.Item.findAll({
+    where: query,
+    include: [db.User]
+  }).then(function(dbItem) {
+    res.json(dbItem)
+  });
+  });
+  
+  app.post("/api/items", async(req, res) => {
+    db.Item.create({
+      name: req.body.name,
+      quantity: req.body.quantity,
+      price: req.body.price,
+      body: req.body.body,
+    }) .then((data) => {
+      db.Inventory.create({
+        UserId: req.user.id,
+        ItemId: data.id
+      });
+      console.log(data.id);
+      console.log(req.user.id);
+     console.log("Item added!")
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(401).json(err);
+    });
+    
+    // const { name, quantity, price, body, UserId } = req.body
+
+    // try{
+    //   const item = await db.Item.create({ name, quantity, price, body, UserId })
+    //   return res.json(item) 
+    // }catch(err){
+    //   console.log(err)
+    // }
+  })
 };
+
