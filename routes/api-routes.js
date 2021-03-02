@@ -76,11 +76,20 @@ module.exports = function(app) {
       quantity: req.body.quantity,
       price: req.body.price,
       body: req.body.body,
-    });
-    db.Inventory.create({
-      userId: req.user.id,
-      itemId: req.Item.id
+    }) .then((data) => {
+      db.Inventory.create({
+        UserId: req.user.id,
+        ItemId: data.id
+      });
+      console.log(data.id);
+      console.log(req.user.id);
+     console.log("Item added!")
     })
+    .catch(err => {
+      console.log(err);
+      res.status(401).json(err);
+    });
+    
     // const { name, quantity, price, body, UserId } = req.body
 
     // try{
