@@ -149,4 +149,5 @@ hr.rounded {
 .brand {
     display: inline-block;
     width: 120px;
+    vertical-align: middle
 }
