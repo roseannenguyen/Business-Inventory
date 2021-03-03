@@ -1,7 +1,8 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
-var userId;
+const { QueryTypes } = require('sequelize');
+
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -56,19 +57,23 @@ module.exports = function(app) {
     }
   });
 
-  app.get("/api/items", function(req,res) {
-    var query = {};
-    if (req.query.user_id) {
-      query.UserId = req.query.user_id;
-    }
-  
-  db.Item.findAll({
-    where: query,
-    include: [db.User]
-  }).then(function(dbItem) {
-    res.json(dbItem)
+  app.get("/api/items", async function(req,res) {
+    const users = await db.sequelize.query(`SELECT item.name, item.quantity
+    FROM item
+    INNER JOIN inventory
+    ON item.id = inventory.ItemId
+    INNER JOIN user
+    ON user.id = inventory.UserId
+    WHERE ${req.user.id}`, { type: QueryTypes.SELECT });
+    res.json(users).then((data) => {
+      console.log(data)
+    }).catch(err => {
+      console.log(err)
+      res.status(401).json(err)
+    })
   });
-  });
+    
+   
   
   app.post("/api/items", async(req, res) => {
     db.Item.create({
