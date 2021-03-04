@@ -1,45 +1,47 @@
 // This file just does a GET request to figure out which user is logged in
 // and updates the HTML on the page
-const itemName = $("#item");
-const itemQuantity = $("#quantity");
-const itemPrice = $("#price");
-const itemDescription = $("#body");
-const submitBtn = $("#submit");
+$(document).ready(function () {
+  const itemName = $("#item");
+  const itemList = $("tbody");
+  const itemQuantity = $("#quantity");
+  const itemPrice = $("#price");
+  const itemDescription = $("#body");
+  const submitBtn = $("#submit");
+  const invTable = $("#inventoryTable");
+  let items;
+  $(document).on("update", "#update-item", handleAuthorFormSubmit);
+  getItems();
+  $(document).on("click", ".delete-item", handleDeleteButtonPress);
 
-$.get("/api/user_data").then(data => {
-  $(".member-name").text(data.email);
-});
+  function handleAuthorFormSubmit(event) {
+    event.preventDefault();
+    // Don't do anything if the name fields hasn't been filled out
+    if (!itemName.val().trim().trim()) {
+      return;
+    }
+    // Calling the upsertAuthor function and passing in the value of the name input
+    upsertItem({
+      items: itemName
+        .val()
+        .trim()
+    });
+  }  
 
-submitBtn.on("click", event => {
-  $.post("/api/items", {
-    name: itemName.val().trim(),
-    quantity: itemQuantity.val().trim(),
-    price: itemPrice.val().trim(),
-    body: itemDescription.val().trim()
-  });
-})
-
-
-window.onhashchange = function () {
-  update();
-};
-
-document.getElementById('download-btn').onclick = function () {
-  update(true);
-};
-function update(shouldDownload) {
-  var funcStr = window.location.hash.replace(/#/g, '') || 'basic';
-  var doc = window.examples[funcStr]();
-
-  doc.setProperties({
-    title: 'Example: ' + funcStr,
-    subject: 'A jspdf-autotable example pdf (' + funcStr + ')'
-  });
-
-  if (shouldDownload) {
-    doc.save('table.pdf');
-  } else {
-    //document.getElementById("output").src = doc.output('datauristring');
-    document.getElementById("output").data = doc.output('datauristring');
+  function upsertItem(user) {
+    $.post("/api/users", user)
+      .then(getItems) => res.send();
   }
-};
+
+
+
+
+  function addBody(data) {
+    var newTr = $("<tr>");
+    newTr.append("<td>"+ data.name +"</td>");
+    newTr.append("<td>" +data.quantity+"</td>");
+    newTr.append("<td>" + data.price +"</td>");
+    newTr.append("<td>"+data.body +"</td>");
+    newTr.append("<td><a style='cursor:pointer;color:red' class='delete-author'>Delete Item</a></td>");
+    return newTr;
+  }
+
