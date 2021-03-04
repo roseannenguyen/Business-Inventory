@@ -31,13 +31,16 @@ $.get("/api/user_data").then(data => {
   $(".member-name").text(data.email);
 });
 
-$.get("/api/items", function(data) {
-for (let i = 0; i < data.length; i++) {
-  const element = data[i];
-  addBody(element);
-  
+function getItem() {
+  $("#inventoryTable").empty();
+  $.get("/api/items", function(data) {
+  for (let i = 0; i < data.length; i++) {
+    const element = data[i];
+    $("#inventoryTable").prepend(element);
+  }
+  })
 }
-});
+
 
 submitBtn.on("click", event => {
 $.post("/api/items", {
