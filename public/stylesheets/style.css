@@ -1,4 +1,4 @@
- #loginContainer {
+ #loginContainer, #signupContainer, #membersContainer {
     justify-content: center;
     background: url(Background-1.jpg);
     background-repeat: no-repeat;
@@ -14,7 +14,6 @@ form.login {
 }
 
 #mainContainer {
- 
     background-color: #dfd9d9;
 }
 
@@ -95,14 +94,12 @@ select.form-control:focus {
   padding-top: 100px;
   margin-left: auto;
   margin-right: auto;
-  background-color: #dfd9d9;
+  background-color: #31c6e8;
 
 }  
 
 #inventoryTable {
   padding-top: 300px;
-
-
 }  
 
 .rounded {
@@ -110,9 +107,10 @@ select.form-control:focus {
 }
 
 .bg-custom {
-     background-color: #CFCFC4 ;
+     background-color: lightgrey ;
     color: black;
-
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 
@@ -166,3 +164,17 @@ hr.rounded {
     width: 120px;
     vertical-align: middle
 }
+
+
+ table
+        {
+            width: 300px;
+            font: 17px Calibri;
+        }
+        table, th, tr, td 
+        {
+            border: solid 1px #DDD;
+            border-collapse: collapse;
+            padding: 2px 3px;
+            text-align: center;
+        }
