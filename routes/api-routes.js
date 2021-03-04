@@ -57,25 +57,23 @@ module.exports = function(app) {
     }
   });
 
-  app.get("/api/items", async function(req,res) {
-    const users = await db.sequelize.query(`SELECT item.name, item.quantity
+  app.get("/api/items", async function(req, res) {
+    await db.sequelize.query(`SELECT item.id, item.name, item.quantity, item.price, item.body
     FROM item
     INNER JOIN inventory
     ON item.id = inventory.ItemId
     INNER JOIN user
     ON user.id = inventory.UserId
-    WHERE ${req.user.id}`, { type: QueryTypes.SELECT });
-    res.json(users).then((data) => {
-      console.log(data)
+    WHERE user.id = ${req.user.id}`, { type: QueryTypes.SELECT }).then((results) => {
+      res.json(results)
     }).catch(err => {
       console.log(err)
-      res.status(401).json(err)
     })
   });
     
    
   
-  app.post("/api/items", async(req, res) => {
+  app.post("/api/items", async (req, res) => {
     db.Item.create({
       name: req.body.name,
       quantity: req.body.quantity,
@@ -103,6 +101,30 @@ module.exports = function(app) {
     // }catch(err){
     //   console.log(err)
     // }
-  })
+  });
+
+  app.put("/api/items", function(req, res) {
+    db.Item.update(
+      req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      }).then(function(data) {
+      res.json(data);
+    });
+  });
+
+  app.delete("/api/items/:id", function(req, res) {
+    db.Item.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(data) {
+      res.json(data);
+    });
+  });
 };
+
+
 
