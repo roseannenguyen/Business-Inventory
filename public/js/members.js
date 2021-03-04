@@ -1,35 +1,4 @@
-// This file just does a GET request to figure out which user is logged in
-// and updates the HTML on the page
-const itemName = $("#item");
-const itemQuantity = $("#quantity");
-const itemPrice = $("#price");
-const itemDescription = $("#body");
-const submitBtn = $("#submit");
-var invTable = $("#inventoryTable");
-function addBody(data) {
-var tr = `<tr>\
-                    <td>\
-                     <h2>${data.name}</h2>\
-                    </td>\
-                  <td>\
-                                    <h2>${data.quantity}</h2>\
-                    </td>\
-                    <td>\
-                                    <h2>${data.price}</h2>\
-                    </td>\
-                    \
-                    <td>\
-<button type=\"button\" class=\"close\"><span aria-hidden=\"true\">&times;</span><span class=\"sr-only\">Close</span></button>\
-<textarea placeholder=\"Optional Description of Item\">${data.body}</textarea>\
-                    </td>\
-                </tr>`;
-                invTable.append(tr);
-                return tr;
-}
-
-$.get("/api/user_data").then(data => {
-  $(".member-name").text(data.email);
-});
+$(document).ready(function () {
 
 function getItem() {
   $("#inventoryTable").empty();
@@ -42,46 +11,62 @@ function getItem() {
 }
 
 
-submitBtn.on("click", event => {
-$.post("/api/items", {
-  name: itemName.val().trim(),
-  quantity: itemQuantity.val().trim(),
-  price: itemPrice.val().trim(),
-  body:itemDescription.val().trim()
-});
-})
+  $(document).on("click", ".edit-item", handlePostEdit);
+  $(document).on("click", ".delete-item", handleDeleteButtonPress);
 
-$(document).ready(function () {
+  function addBody(data) {
+    var newTr = $("<tr>");
+    newTr.append("<td>" + data.name + "</td>");
+    newTr.append("<td>" + data.quantity + "</td>");
+    newTr.append("<td>" + data.price + "</td>");
+    newTr.append("<td>" + data.body + "</td>");
+    newTr.append("<td><a style='cursor:pointer;color:green' class='edit-item'>Edit Item</a></td>");
+    newTr.append("<td><a style='cursor:pointer;color:red' class='delete-item'>Delete Item</a></td>");
+    invTable.append(newTr)
+    return newTr;
+  }
 
-  $('.close').on('click', function (e) {
-    e.preventDefault();
-    $(this).parent().parent().remove();
+  $.get("/api/user_data").then(data => {
+    $(".member-name").text(data.email);
+  });
+  function getItems() {
+    invTable.empty();
+    $.get("/api/items", function (data) {
+      for (let i = 0; i < data.length; i++) {
+        const element = data[i];
+        addBody(element);
+
+      }
+    });
+  }
+
+  submitBtn.on("click", event => {
+    event.preventDefault();
+    $.post("/api/items", {
+      name: itemName.val().trim(),
+      quantity: itemQuantity.val().trim(),
+      price: itemPrice.val().trim(),
+      body: itemDescription.val().trim()
+    }).then(getItems);
   });
 
-  $('#submit').click(function () {
-    var item = $('input[name=item]').val();
-    var quantity = $('input[name=quantity]').val();
-    var price = $('input[name=price]').val();
-    var body = $('input[name=body]').val();
+  function handleDeleteButtonPress() {
+    var user = $(this).parent("td").parent("tr").data("author");
+    var id = user.id;
+    $.ajax({
+      method: "DELETE",
+      url: "/api/items/" + id
+    })
+      .then(getItems)
+  }
 
-    
-    $('#table tbody').append(tr);
+  function handlePostEdit() {
+    var currentPost = $(this)
+      .parent()
+      .parent()
+      .data("post");
+    window.location.href = "/cms?post_id=" + currentPost.id;
+  }
 
-    $("input[type=text]").val("");
-    $("input[type=number]").val("");
-
-  });
-});
-
-$(function () {
-  $('#orderModal').modal({
-    keyboard: true,
-    backdrop: "static",
-    show: false,
-
-  }).on('show', function () {
-    var getIdFromRow = $(event.target).closest('tr').data('id');
-    //make your ajax call populate items or what even you need
-    $(this).find('#orderDetails').html($('<b> Order Id selected: ' + getIdFromRow + '</b>'))
-  });
+  getItems();
 });

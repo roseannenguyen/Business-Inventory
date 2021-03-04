@@ -83,6 +83,8 @@ module.exports = function(app) {
       db.Inventory.create({
         UserId: req.user.id,
         ItemId: data.id
+      }).then(() => {
+        res.send();
       });
       console.log(data.id);
       console.log(req.user.id);
