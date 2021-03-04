@@ -5,9 +5,38 @@ const itemQuantity = $("#quantity");
 const itemPrice = $("#price");
 const itemDescription = $("#body");
 const submitBtn = $("#submit");
+var invTable = $("#inventoryTable");
+function addBody(data) {
+var tr = `<tr>\
+                    <td>\
+                     <h2>${data.name}</h2>\
+                    </td>\
+                  <td>\
+                                    <h2>${data.quantity}</h2>\
+                    </td>\
+                    <td>\
+                                    <h2>${data.price}</h2>\
+                    </td>\
+                    \
+                    <td>\
+<button type=\"button\" class=\"close\"><span aria-hidden=\"true\">&times;</span><span class=\"sr-only\">Close</span></button>\
+<textarea placeholder=\"Optional Description of Item\">${data.body}</textarea>\
+                    </td>\
+                </tr>`;
+                invTable.append(tr);
+                return tr;
+}
 
 $.get("/api/user_data").then(data => {
   $(".member-name").text(data.email);
+});
+
+$.get("/api/items", function(data) {
+for (let i = 0; i < data.length; i++) {
+  const element = data[i];
+  addBody(element);
+  
+}
 });
 
 submitBtn.on("click", event => {
@@ -32,22 +61,7 @@ $(document).ready(function () {
     var price = $('input[name=price]').val();
     var body = $('input[name=body]').val();
 
-    var tr = "<tr>\
-                    <td>\
-                     <h2> " + item + "</h2>\
-                    </td>\
-                  <td>\
-                                    <h2> " + quantity + "</h2>\
-                    </td>\
-                    <td>\
-                                    <h2> $" + price + "</h2>\
-                    </td>\
-                    \
-                    <td>\
-<button type=\"button\" class=\"close\"><span aria-hidden=\"true\">&times;</span><span class=\"sr-only\">Close</span></button>\
-<textarea placeholder=\"Optional Description of Item\">" + body + "</textarea>\
-                    </td>\
-                </tr>;";
+    
     $('#table tbody').append(tr);
 
     $("input[type=text]").val("");
