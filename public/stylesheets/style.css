@@ -164,3 +164,17 @@ hr.rounded {
     width: 120px;
     vertical-align: middle
 }
+
+
+ table
+        {
+            width: 300px;
+            font: 17px Calibri;
+        }
+        table, th, tr, td 
+        {
+            border: solid 1px #DDD;
+            border-collapse: collapse;
+            padding: 2px 3px;
+            text-align: center;
+        }

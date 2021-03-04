@@ -46,9 +46,9 @@ $(document).ready(function () {
     }).then(getItems);
   });
 
-  function handleDeleteButtonPress() {
-    var user = $(this).parent("td").parent("tr").data("author");
-    var id = user.id;
+  function handleDeleteButtonPress(data) {
+    var data = $(this).parent("td").parent("tr").data("items");
+    var id = data.id;
     $.ajax({
       method: "DELETE",
       url: "/api/items/" + id
@@ -56,13 +56,15 @@ $(document).ready(function () {
       .then(getItems)
   }
 
-  function handlePostEdit() {
-    var currentPost = $(this)
+  function handlePostEdit(ItemId) {
+    var items = $(this)
       .parent()
       .parent()
-      .data("post");
-    window.location.href = "/cms?post_id=" + currentPost.id;
+      .data("items");
+    window.location.href = "/api/item/id=" + items.id;
   }
 
   getItems();
+
+
 });

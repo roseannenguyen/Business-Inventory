@@ -17,7 +17,7 @@
     aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#">`${name}`</a>
+  <a class="navbar-brand" href="#"><span class="member-name"></span></a>
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -36,7 +36,7 @@
 
   <div class="jumbotron jumbotron-fluid">
     <div class="container-fluid">
-      <h1 class="display-4">(Insert Business Name) Inventory Management</h1>
+      <h1 class="display-4"><span class="member-name"></span><br>Inventory Management</h1>
       <p class="lead">Manage your company.</p>
     </div>
   </div>
@@ -69,10 +69,36 @@
 
         </tbody>
       </table>
+      <p>
+        <input type="button" value="Create PDF" id="btPrint" onclick="createPDF()" />
+      </p>
     </div>
   </div>
-<button id="submitBtn" class="pure-button">Download PDF</button>
 
+<script>function createPDF() {
+    var sTable = document.getElementById('inventoryTable').innerHTML;
+
+    var style = "<style>";
+    style = style + "table {width: 100%;font: 17px Calibri;}";
+    style = style + "table, th, td {border: solid 1px #DDD; border-collapse: collapse;";
+    style = style + "padding: 2px 3px;text-align: center;}";
+    style = style + "</style>";
+
+    // CREATE A WINDOW OBJECT.
+    var win = window.open('', '', 'height=700,width=700');
+
+    win.document.write('<html><head>');
+    win.document.write('<title>Profile</title>');   // <title> FOR PDF HEADER.
+    win.document.write(style);          // ADD STYLE INSIDE THE HEAD TAG.
+    win.document.write('</head>');
+    win.document.write('<body>');
+    win.document.write(sTable);         // THE TABLE CONTENTS INSIDE THE BODY TAG.
+    win.document.write('</body></html>');
+
+    win.document.close(); 	// CLOSE THE CURRENT WINDOW.
+
+    win.print();    // PRINT THE CONTENTS.
+  }</script>
 
 
 
