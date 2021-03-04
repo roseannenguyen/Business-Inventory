@@ -32,7 +32,6 @@ $.get("/api/user_data").then(data => {
   $(".member-name").text(data.email);
 });
 function getItems() {
-  console.log("hello");
   invTable.empty();
 $.get("/api/items", function(data) {
 for (let i = 0; i < data.length; i++) {
