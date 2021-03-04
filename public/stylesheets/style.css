@@ -1,4 +1,4 @@
- #loginContainer {
+ #loginContainer, #signupContainer, #membersContainer {
     justify-content: center;
     background: url(Background-1.jpg);
     background-repeat: no-repeat;

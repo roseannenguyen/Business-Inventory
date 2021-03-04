@@ -1,11 +1,15 @@
 $(document).ready(function () {
 
-  const itemName = $("#item");
-  const itemQuantity = $("#quantity");
-  const itemPrice = $("#price");
-  const itemDescription = $("#body");
-  const submitBtn = $("#submit");
-  const invTable = $("#inventoryTable");
+function getItem() {
+  $("#inventoryTable").empty();
+  $.get("/api/items", function(data) {
+  for (let i = 0; i < data.length; i++) {
+    const element = data[i];
+    $("#inventoryTable").prepend(element);
+  }
+  })
+}
+
 
   $(document).on("click", ".edit-item", handlePostEdit);
   $(document).on("click", ".delete-item", handleDeleteButtonPress);
