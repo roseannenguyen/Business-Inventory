@@ -7,13 +7,15 @@ $(document).ready(function () {
   const invTable = $("#inventoryTable");
 
 function getItems() {
-  $("#inventoryTable").empty();
-  $.get("/api/items", function(data) {
-  for (let i = 0; i < data.length; i++) {
-    const element = data[i];
-    $("#inventoryTable").prepend(element);
-  }
-  })
+  invTable.empty();
+$.get("/api/items", function(data) {
+for (let i = 0; i < data.length; i++) {
+  const element = data[i];
+  addBody(element);
+  
+}
+});
+
 }
 
 
