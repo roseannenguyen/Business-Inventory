@@ -1,6 +1,12 @@
 $(document).ready(function () {
+  const itemName = $("#item");
+  const itemQuantity = $("#quantity");
+  const itemPrice = $("#price");
+  const itemDescription = $("#body");
+  const submitBtn = $("#submit");
+  const invTable = $("#inventoryTable");
 
-function getItem() {
+function getItems() {
   $("#inventoryTable").empty();
   $.get("/api/items", function(data) {
   for (let i = 0; i < data.length; i++) {
