@@ -105,6 +105,17 @@ module.exports = function(app) {
     // }
   });
 
+  app.get("/api/items/:id", function (req, res) {
+    db.Item.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function (data) {
+      res.json(data);
+    });
+  });
+
+  // save
   app.put("/api/items", function(req, res) {
     db.Item.update(
       req.body,

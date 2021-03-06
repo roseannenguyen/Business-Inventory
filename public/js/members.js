@@ -6,24 +6,26 @@ $(document).ready(function () {
   const submitBtn = $("#submit");
   const invTable = $("#inventoryTable");
 
-function getItems() {
-  invTable.empty();
-$.get("/api/items", function(data) {
-for (let i = 0; i < data.length; i++) {
-  const element = data[i];
-  addBody(element);
-  
-}
-});
+  function getItems() {
+    invTable.empty();
+    $.get("/api/items", function (data) {
+      for (let i = 0; i < data.length; i++) {
+        const element = data[i];
+        addBody(element);
 
-}
+      }
+    });
+
+  }
 
 
   $(document).on("click", ".edit-item", handlePostEdit);
-  $(document).on("click", ".delete-item", handleDeleteButtonPress);
+  $(document).on("click", ".delete-item", handlePostDelete);
 
   function addBody(data) {
     var newTr = $("<tr>");
+    $(newTr).attr("data-id", data.id);
+    console.log(data)
     newTr.append("<td>" + data.name + "</td>");
     newTr.append("<td>" + data.quantity + "</td>");
     newTr.append("<td>" + data.price + "</td>");
@@ -33,6 +35,8 @@ for (let i = 0; i < data.length; i++) {
     invTable.append(newTr)
     return newTr;
   }
+
+  // save button
 
   $.get("/api/user_data").then(data => {
     $(".member-name").text(data.email);
@@ -58,22 +62,43 @@ for (let i = 0; i < data.length; i++) {
     }).then(getItems);
   });
 
-  function handleDeleteButtonPress(data) {
-    var data = $(this).parent("td").parent("tr").data("items");
-    var id = data.id;
+  function deletePost(id) {
     $.ajax({
       method: "DELETE",
       url: "/api/items/" + id
     })
-      .then(getItems)
+      .then(function () {
+        getItems();
+      });
   }
 
-  function handlePostEdit(ItemId) {
-    var items = $(this)
+  function handlePostDelete() {
+    var currentItem = $(this)
       .parent()
       .parent()
-      .data("items");
-    window.location.href = "/api/item/id=" + items.id;
+      .data("id");
+    deletePost(currentItem);
+  }
+
+
+  // This function figures out which post we want to edit and takes it to the appropriate url
+  function handlePostEdit() {
+    var currentItems = $(this)
+      .parent()
+      .parent()
+      .data("id");
+    // window.location.href = "/api/items/?id=" + currentItems;
+    editPost(currentItems);
+  }
+
+  function editPost(id) {
+    $.ajax({
+      method: "GET",
+      url: "/api/items/" + id
+    })
+      .then(function () {
+        // getItems();
+      });
   }
 
   getItems();
