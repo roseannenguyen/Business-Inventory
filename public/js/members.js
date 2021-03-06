@@ -5,6 +5,8 @@ $(document).ready(function () {
   const itemDescription = $("#body");
   const submitBtn = $("#submit");
   const invTable = $("#inventoryTable");
+  const editEl = $("#edit-item");
+  const deleteEl = $("#delete-item");
 
   $('#submit').show();
   $('#save-edit').hide()
@@ -33,8 +35,8 @@ $(document).ready(function () {
     newTr.append("<td>" + data.quantity + "</td>");
     newTr.append("<td>" + data.price + "</td>");
     newTr.append("<td>" + data.body + "</td>");
-    newTr.append("<td><a style='cursor:pointer;color:green' class='edit-item'>Edit Item</a></td>");
-    newTr.append("<td><a style='cursor:pointer;color:red' class='delete-item'>Delete Item</a></td>");
+    newTr.append("<td><a style='cursor:pointer;color:green' class ='edit-item'>Edit Item</a></td>");
+    newTr.append("<td><a style='cursor:pointer;color:red' class ='delete-item'>Delete Item</a></td>");
     invTable.append(newTr)
     return newTr;
   }
@@ -42,7 +44,7 @@ $(document).ready(function () {
   // save button
 
   $.get("/api/user_data").then(data => {
-    $(".member-name").text(data.email);
+    $(".member-name").text(data.business_name);
   });
   function getItems() {
     invTable.empty();
@@ -127,6 +129,7 @@ $(document).ready(function () {
       .then(function () {
         getItems();
         clearForm();
+        location.reload();
       });
   })
 
@@ -137,6 +140,16 @@ $(document).ready(function () {
     itemDescription.val('')
   }
 
+  function updatePost(post) {
+    $.ajax({
+      method: "PUT",
+      url: "/api/items",
+      data: post
+    })
+      .then(function() {
+        window.location.href = "/members";
+      });
+  }
   getItems();
 
 
