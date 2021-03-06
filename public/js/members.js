@@ -5,6 +5,8 @@ $(document).ready(function () {
   const itemDescription = $("#body");
   const submitBtn = $("#submit");
   const invTable = $("#inventoryTable");
+  const editEl = $("#edit-item");
+  const deleteEl = $("#delete-item");
 
 function getItems() {
   invTable.empty();
@@ -28,8 +30,8 @@ for (let i = 0; i < data.length; i++) {
     newTr.append("<td>" + data.quantity + "</td>");
     newTr.append("<td>" + data.price + "</td>");
     newTr.append("<td>" + data.body + "</td>");
-    newTr.append("<td><a style='cursor:pointer;color:green' class='edit-item'>Edit Item</a></td>");
-    newTr.append("<td><a style='cursor:pointer;color:red' class='delete-item'>Delete Item</a></td>");
+    newTr.append("<td><a style='cursor:pointer;color:green' class ='edit-item'>Edit Item</a></td>");
+    newTr.append("<td><a style='cursor:pointer;color:red' class ='delete-item'>Delete Item</a></td>");
     invTable.append(newTr)
     return newTr;
   }
@@ -74,6 +76,17 @@ for (let i = 0; i < data.length; i++) {
       .parent()
       .data("items");
     window.location.href = "/api/item/id=" + items.id;
+  }
+
+  function updatePost(post) {
+    $.ajax({
+      method: "PUT",
+      url: "/api/items",
+      data: post
+    })
+      .then(function() {
+        window.location.href = "/members";
+      });
   }
 
   getItems();
