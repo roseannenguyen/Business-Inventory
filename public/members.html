@@ -47,7 +47,9 @@
           </ul>
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
           </form>
         </div>
       </nav>
@@ -74,6 +76,8 @@
               <label> Price: $<input type="number" id="price" name="price"></label>
               <label>Description: <br><textarea type="text" id="body" name="body"
                   placeholder="Add notes or description of item"></textarea></label>
+              <button type="button" class="btn btn-dark btn-block btn-warning" value="Add" id="save-edit"> Save
+              </button>
               <button type="button" class="btn btn-dark btn-block" value="Add" id="submit"> Add </button>
             </form>
           </div>
@@ -92,15 +96,15 @@
           <p>
             <input type="button" value="Create PDF" id="btPrint" onclick="createPDF()" />
           </p>
-          <input type="button" onclick="tableToExcel('inventoryTable', 'W3C Example Table')" value="Export to Excel">
+          <input type="button" onclick="" value="Export to Excel">
         </div>
       </div>
     </div>
 
 
     <script>
-    
-    function createPDF() {
+
+      function createPDF() {
         var sTable = document.getElementById('inventoryTable').innerHTML;
 
         var style = "<style>";
@@ -124,18 +128,6 @@
 
         win.print();    // PRINT THE CONTENTS.
 
-        var tableToExcel = (function () {
-          var uri = 'data:application/vnd.ms-excel;base64,'
-            , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
-            , base64 = function (s) { return window.btoa(unescape(encodeURIComponent(s))) }
-            , format = function (s, c) { return s.replace(/{(\w+)}/g, function (m, p) { return c[p]; }) }
-          return function (table, name) {
-            if (!table.nodeType) table = document.getElementById(table)
-            var ctx = { worksheet: name || 'Worksheet', table: table.innerHTML }
-            window.location.href = uri + base64(format(template, ctx))
-          }
-        })()
-      }
     </script>
 
 

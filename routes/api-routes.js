@@ -105,16 +105,28 @@ module.exports = function(app) {
     // }
   });
 
-  app.put("/api/items", function(req, res) {
+  app.get("/api/items/:id", function (req, res) {
+    db.Item.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function (data) {
+      res.json(data);
+    });
+  });
+
+  // save
+  app.put("/api/items/:id", function (req, res) {
+    console.log('updating on backend', req.params.id, req.body)
     db.Item.update(
       req.body,
       {
         where: {
-          id: req.body.id
+          id: req.params.id
         }
-      }).then(function(data) {
-      res.json(data);
-    });
+      }).then(function (data) {
+        res.json(data);
+      });
   });
 
   app.delete("/api/items/:id", function(req, res) {
