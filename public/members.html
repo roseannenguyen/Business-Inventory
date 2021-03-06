@@ -38,6 +38,8 @@
 
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 
+
+
                     <form class="form-inline my-2 my-lg-0">
                         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 
@@ -46,9 +48,9 @@
                     </form>
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
-                        <li class="nav-item active" href="/logout">
-                            Logout
-                        </li>
+                        <li><a class="nav-item active" style="color:black" href="/logout">
+                                Logout
+                            </a></li>
                     </ul>
                 </div>
             </nav>
@@ -87,15 +89,27 @@
                     </div>
                 </div>
             </div>
-            <div id="inventoryTableContainer" class="row h-100 align-items-center justify-content-center text-center">
-                <div class="col-md">
-
-                    <table id="inventoryTable" class="table table table-dark table-bordered table-hover">
+            <div class="col-md">
+                <div id="inventoryTableContainer"
+                    class="row h-100 align-items-center justify-content-center text-center">
+                    <h2 id="tableHeader"><span class="member-name"></span> Inventory</h2>
+                    <table class="table table table-dark table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Item Name</th>
+                                <th>Quanity</th>
+                                <th>Price ($)</th>
+                                <th>Description</th>
+                                <th>Edit</th>
+                            <th>Delete</th>
+                            </tr>
+                        </thead>
                         <tbody>
-
-
-
+                            <tr id="inventoryTable">
+                             
+                            </tr>
                         </tbody>
+
                     </table>
                     <p>
                         <input type="button" value="Create PDF" id="btPrint" onclick="createPDF()" />

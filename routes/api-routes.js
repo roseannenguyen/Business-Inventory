@@ -24,6 +24,7 @@ module.exports = function(app) {
   // otherwise send back an error
   app.post("/api/signup", (req, res) => {
     db.User.create({
+      business_name: req.body.name,
       email: req.body.email,
       password: req.body.password
     })
@@ -51,6 +52,7 @@ module.exports = function(app) {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
+        business_name: req.user.business_name,
         email: req.user.email,
         id: req.user.id
       });
