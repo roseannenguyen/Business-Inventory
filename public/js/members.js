@@ -6,6 +6,9 @@ $(document).ready(function () {
   const submitBtn = $("#submit");
   const invTable = $("#inventoryTable");
 
+  $('#submit').show();
+  $('#save-edit').hide()
+
   function getItems() {
     invTable.empty();
     $.get("/api/items", function (data) {
@@ -92,13 +95,46 @@ $(document).ready(function () {
   }
 
   function editPost(id) {
-    $.ajax({
-      method: "GET",
-      url: "/api/items/" + id
-    })
+    $('#submit').hide();
+    $('#save-edit').show();
+    $('#save-edit').attr('data-id', id);
+    var item = $(`tr[data-id='${id}'] td:nth-child(1)`).text();
+    var quantity = $(`tr[data-id='${id}'] td:nth-child(2)`).text();
+    var price = $(`tr[data-id='${id}'] td:nth-child(3)`).text();
+    var body = $(`tr[data-id='${id}'] td:nth-child(4)`).text();
+    $('#item').val(item);
+    $('#quantity').val(quantity);
+    $('#price').val(price);
+    $('#body').val(body);
+
+  }
+
+  $('#save-edit').on('click', function (e) {
+    e.preventDefault();
+    console.log('edit submtted', $(this))
+    $.ajax(
+      {
+        type: "PUT",
+        url: "/api/items/" + $(this).data('id'),
+        contentType: 'application/json',
+        data: JSON.stringify({
+          name: itemName.val().trim(),
+          quantity: itemQuantity.val().trim(),
+          price: itemPrice.val().trim(),
+          body: itemDescription.val().trim()
+        })
+      })
       .then(function () {
-        // getItems();
+        getItems();
+        clearForm();
       });
+  })
+
+  function clearForm() {
+    itemName.val('')
+    itemQuantity.val('')
+    itemPrice.val('')
+    itemDescription.val('')
   }
 
   getItems();

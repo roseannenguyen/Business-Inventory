@@ -47,7 +47,9 @@
           </ul>
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
           </form>
         </div>
       </nav>
@@ -74,6 +76,8 @@
               <label> Price: $<input type="number" id="price" name="price"></label>
               <label>Description: <br><textarea type="text" id="body" name="body"
                   placeholder="Add notes or description of item"></textarea></label>
+              <button type="button" class="btn btn-dark btn-block btn-warning" value="Add" id="save-edit"> Save
+              </button>
               <button type="button" class="btn btn-dark btn-block" value="Add" id="submit"> Add </button>
             </form>
           </div>
@@ -98,9 +102,9 @@
     </div>
 
 
-   <script>
-    
-    function createPDF() {
+    <script>
+
+      function createPDF() {
         var sTable = document.getElementById('inventoryTable').innerHTML;
 
         var style = "<style>";
@@ -124,7 +128,7 @@
 
         win.print();    // PRINT THE CONTENTS.
 
-    </script> 
+    </script>
 
 
 
