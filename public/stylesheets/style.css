@@ -92,6 +92,7 @@ select.form-control:focus {
 
 #inventoryTableContainer {
   padding-top: 100px;
+  padding-bottom: 100px;
   margin-left: auto;
   margin-right: auto;
   background-color: #31c6e8;

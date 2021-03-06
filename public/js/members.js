@@ -26,7 +26,7 @@ $(document).ready(function () {
   $(document).on("click", ".delete-item", handlePostDelete);
 
   function addBody(data) {
-    var newTr = $("<tr>");
+    let newTr = $("<tr>");
     $(newTr).attr("data-id", data.id);
     console.log(data)
     newTr.append("<td>" + data.name + "</td>");
@@ -38,8 +38,6 @@ $(document).ready(function () {
     invTable.append(newTr)
     return newTr;
   }
-
-  // save button
 
   $.get("/api/user_data").then(data => {
     $(".member-name").text(data.email);
@@ -76,7 +74,7 @@ $(document).ready(function () {
   }
 
   function handlePostDelete() {
-    var currentItem = $(this)
+    let currentItem = $(this)
       .parent()
       .parent()
       .data("id");
@@ -86,7 +84,7 @@ $(document).ready(function () {
 
   // This function figures out which post we want to edit and takes it to the appropriate url
   function handlePostEdit() {
-    var currentItems = $(this)
+    let currentItems = $(this)
       .parent()
       .parent()
       .data("id");
@@ -98,10 +96,10 @@ $(document).ready(function () {
     $('#submit').hide();
     $('#save-edit').show();
     $('#save-edit').attr('data-id', id);
-    var item = $(`tr[data-id='${id}'] td:nth-child(1)`).text();
-    var quantity = $(`tr[data-id='${id}'] td:nth-child(2)`).text();
-    var price = $(`tr[data-id='${id}'] td:nth-child(3)`).text();
-    var body = $(`tr[data-id='${id}'] td:nth-child(4)`).text();
+    let item = $(`tr[data-id='${id}'] td:nth-child(1)`).text();
+    let quantity = $(`tr[data-id='${id}'] td:nth-child(2)`).text();
+    let price = $(`tr[data-id='${id}'] td:nth-child(3)`).text();
+    let body = $(`tr[data-id='${id}'] td:nth-child(4)`).text();
     $('#item').val(item);
     $('#quantity').val(quantity);
     $('#price').val(price);
