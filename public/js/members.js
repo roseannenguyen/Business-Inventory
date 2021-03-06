@@ -44,7 +44,7 @@ $(document).ready(function () {
   // save button
 
   $.get("/api/user_data").then(data => {
-    $(".member-name").text(data.email);
+    $(".member-name").text(data.business_name);
   });
   function getItems() {
     invTable.empty();
@@ -129,6 +129,7 @@ $(document).ready(function () {
       .then(function () {
         getItems();
         clearForm();
+        location.reload();
       });
   })
 
@@ -149,7 +150,6 @@ $(document).ready(function () {
         window.location.href = "/members";
       });
   }
-
   getItems();
 
 
