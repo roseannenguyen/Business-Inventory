@@ -34,8 +34,8 @@ $(document).ready(function () {
     newTr.append("<td>" + data.quantity + "</td>");
     newTr.append("<td>" + data.price + "</td>");
     newTr.append("<td>" + data.body + "</td>");
-    newTr.append("<td><a style='cursor:pointer;color:green' class ='edit-item'>Edit Item</a></td>");
-    newTr.append("<td><a style='cursor:pointer;color:red' class ='delete-item'>Delete Item</a></td>");
+    newTr.append("<td class='hidden-print'><a style='cursor:pointer;color:green' role='button' class ='edit-item'>Edit Item</a></td>");
+    newTr.append("<td class='hidden-print'><a style='cursor:pointer;color:red' role='button' class ='delete-item'>Delete Item</a></td>");
     invTable.append(newTr)
     return newTr;
   }
@@ -137,16 +137,7 @@ $(document).ready(function () {
     itemDescription.val('')
   }
 
-  function updatePost(post) {
-    $.ajax({
-      method: "PUT",
-      url: "/api/items",
-      data: post
-    })
-      .then(function() {
-        window.location.href = "/members";
-      });
-  }
+ 
   getItems();
 
 
