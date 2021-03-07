@@ -89,7 +89,7 @@
                 </div>
             </div>
 
-                <hr class="rounded">
+            <hr class="rounded">
 
             <div class="col-md">
                 <div id="inventoryTableContainer"
@@ -116,104 +116,112 @@
 
                 </div>
 
-                <p>
-                    <input type="button" value="Create PDF" id="btPrint" onclick="createPDF()" />
-                </p>
-                <button onclick="exportTableToExcel('inventoryTableContainer', 'inventory-table')">Export Table Data To
-                    Excel File</button>
+            <div class="col-md">
+                <div class="row h-100 align-items-center justify-content-center text-center">
+                    <p>
+                        <input type="button" value="Create PDF" class="btPrint" onclick="createPDF()" />
+                    </p>
+                </div>
+            </div>
+                        <div class="col-md">
+                <div class="row h-100 align-items-center justify-content-center text-center">
+
+                    <button onclick="exportTableToExcel('inventoryTableContainer', 'inventory-table')">Export Table Data
+                        To
+                        Excel File</button>
+                </div>
             </div>
         </div>
-    </div>
 
 
-    <script>
-        function createPDF() {
+        <script>
+            function createPDF() {
 
-            var sTable = $("#inventoryTableContainer").clone()
+                var sTable = $("#inventoryTableContainer").clone()
 
-            sTable.find(".hidden-print").hide();
+                sTable.find(".hidden-print").hide();
 
-            var style = "<style>";
-            style = style + "table {width: 100%;font: 17px Calibri;}";
-            style = style + "table, th, td {border: solid 1px #DDD; border-collapse: collapse;";
-            style = style + "padding: 2px 3px;text-align: center;}";
-            style = style + "</style>";
+                var style = "<style>";
+                style = style + "table {width: 100%;font: 17px Calibri;}";
+                style = style + "table, th, td {border: solid 1px #DDD; border-collapse: collapse;";
+                style = style + "padding: 2px 3px;text-align: center;}";
+                style = style + "</style>";
 
-            // CREATE A WINDOW OBJECT.
-            var win = window.open('', '', 'height=700,width=700');
+                // CREATE A WINDOW OBJECT.
+                var win = window.open('', '', 'height=700,width=700');
 
-            win.document.write('<html><head>');
-            win.document.write('<title>Inventory</title>');   // <title> FOR PDF HEADER.
-            win.document.write(style);          // ADD STYLE INSIDE THE HEAD TAG.
-            win.document.write('</head>');
-            win.document.write('<body>');
-            win.document.write(sTable.html());         // THE TABLE CONTENTS INSIDE THE BODY TAG.
+                win.document.write('<html><head>');
+                win.document.write('<title>Inventory</title>');   // <title> FOR PDF HEADER.
+                win.document.write(style);          // ADD STYLE INSIDE THE HEAD TAG.
+                win.document.write('</head>');
+                win.document.write('<body>');
+                win.document.write(sTable.html());         // THE TABLE CONTENTS INSIDE THE BODY TAG.
 
-            win.document.write('</body></html>');
+                win.document.write('</body></html>');
 
-            win.document.close(); 	// CLOSE THE CURRENT WINDOW.
+                win.document.close(); 	// CLOSE THE CURRENT WINDOW.
 
-            win.print();    // PRINT THE CONTENTS.
-        }
-
-
-
-        function exportTableToExcel(tableID, filename = '') {
-
-            var sTable = $("#inventoryTableContainer").clone()
-
-            sTable.find(".hidden-print").hide();
-
-            var downloadLink;
-            var dataType = 'application/vnd.ms-excel';
-            var tableSelect = document.getElementById(tableID);
-
-            // var hideCol = document.getElementsByClassName("hidden-print")
-            // hideCol.hide()
-
-            var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
-
-
-
-            // Specify file name
-            filename = filename ? filename + '.xls' : 'excel_data.xls';
-
-            // Create download link element
-            downloadLink = document.createElement("a");
-
-            document.body.appendChild(downloadLink);
-
-            if (navigator.msSaveOrOpenBlob) {
-                var blob = new Blob(['\ufeff', tableHTML], {
-                    type: dataType
-                });
-                navigator.msSaveOrOpenBlob(blob, filename);
-            } else {
-                // Create a link to the file
-                downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
-
-                // Setting the file name
-                downloadLink.download = filename;
-
-                //triggering the function
-                downloadLink.click();
+                win.print();    // PRINT THE CONTENTS.
             }
-        }
-    </script>
 
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <script type="text/javascript" src="js/members.js"></script>
+            function exportTableToExcel(tableID, filename = '') {
+
+                var sTable = $("#inventoryTableContainer").clone()
+
+                sTable.find(".hidden-print").hide();
+
+                var downloadLink;
+                var dataType = 'application/vnd.ms-excel';
+                var tableSelect = document.getElementById(tableID);
+
+                // var hideCol = document.getElementsByClassName("hidden-print")
+                // hideCol.hide()
+
+                var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+
+
+                // Specify file name
+                filename = filename ? filename + '.xls' : 'excel_data.xls';
+
+                // Create download link element
+                downloadLink = document.createElement("a");
+
+                document.body.appendChild(downloadLink);
+
+                if (navigator.msSaveOrOpenBlob) {
+                    var blob = new Blob(['\ufeff', tableHTML], {
+                        type: dataType
+                    });
+                    navigator.msSaveOrOpenBlob(blob, filename);
+                } else {
+                    // Create a link to the file
+                    downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+                    // Setting the file name
+                    downloadLink.download = filename;
+
+                    //triggering the function
+                    downloadLink.click();
+                }
+            }
+        </script>
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <script type="text/javascript" src="js/members.js"></script>
 
 
 </body>

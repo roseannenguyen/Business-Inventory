@@ -1,12 +1,12 @@
- body {
-    justify-content: center;
-    background: url(Background-1.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-color: #dfd9d9;
-    
+body {
+  justify-content: center;
+  background: url(Background-1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #dfd9d9;
+  color: white;
 }
- 
+
 form.signup,
 form.login {
   margin-top: 20px;
@@ -14,17 +14,18 @@ form.login {
 }
 
 #mainContainer {
-    background-color: #444444;
+  background-color: #444444;
 }
-
 
 #footerContainer {
-    text-align: center;
+  text-align: center;
 }
 
-#navContainer, footer, .navbar{
-    background-color: #444444;
-    max-width: 100%;
+#navContainer,
+footer,
+.navbar {
+  background-color: #444444;
+  max-width: 100%;
 }
 
 input[type="text"],
@@ -59,38 +60,38 @@ select.form-control:focus {
   box-shadow: none;
 }
 
-
-#navContainer, footer{
-    padding: 5px 5px;
-    background-color: #444444;
-    max-width: 100%;
+#navContainer,
+footer {
+  padding: 5px 5px;
+  background-color: #444444;
+  max-width: 100%;
 }
 
-
-#footerContainer, #bodyContainer{
-    background-color:#444444;
-    max-width: 100%;
-    text-align: center;
+#footerContainer,
+#bodyContainer {
+  background-color: #444444;
+  max-width: 100%;
+  text-align: center;
 }
 
 .jumbotron {
-    padding-bottom: 10px; 
-    text-align: center;
-    background-color: #202020;
+  padding-bottom: 10px;
+  text-align: center;
+  background-color: #202020;
 }
 
 .member-name {
-    color: rgb(0, 197, 204);
+  color: rgb(0, 197, 204);
 }
 
 .icon {
-    display: inline-block;
-    width: 100px;
-    text-align: end;
+  display: inline-block;
+  width: 100px;
+  text-align: end;
 }
 
 .form-inline {
-    margin-right: auto;
+  margin-right: auto;
 }
 
 #inventoryTableContainer {
@@ -99,61 +100,59 @@ select.form-control:focus {
   margin-left: auto;
   margin-right: auto;
   background-color: #444444;
-  
-}  
+}
 
 #inventoryTable {
   padding-top: 300px;
-}  
+}
 
 .rounded {
-    border-radius:.25rem!important
+  border-radius: 0.25rem !important;
 }
 
 .bg-custom {
-     background-color: 444444 ;
-    color: black;
-    padding-top: 30px;
-    padding-bottom: 30px;
+  background-color: 444444;
+  color: black;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
-
-
-label, input {
-    display: block;
-    display: flex;
+label,
+input {
+  display: block;
+  display: flex;
 }
 
 label {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
-textarea {	 
--webkit-box-sizing: border-box; 
--moz-box-sizing: border-box; 
-box-sizing: border-box;	 
-width: 100%;
+textarea {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
 }
 
-.nav-link, .form-inline {
-    font-family: 'Avantgarde', sans-serif;
-    color: white;
-    font-size: 20px;
-    display: inline-block;
+.nav-link,
+.form-inline {
+  font-family: "Avantgarde", sans-serif;
+  color: white;
+  font-size: 20px;
+  display: inline-block;
 }
 
 .navbar-brand {
-    display: inline-block;
-    font-family: 'Avantgarde', sans-serif;
-    font-size: 30px;
+  display: inline-block;
+  font-family: "Avantgarde", sans-serif;
+  font-size: 30px;
 }
 
-
 .navbar-brand {
-    padding: 10px 0px 0px 100px;
-    font-size: 30px;
-    font-family: 'Avantgarde', sans-serif;
-    color: white;
+  padding: 10px 0px 0px 100px;
+  font-size: 30px;
+  font-family: "Avantgarde", sans-serif;
+  color: white;
 }
 
 hr.rounded {
@@ -161,28 +160,34 @@ hr.rounded {
   border-radius: 1px;
 }
 
-
-
 .brand {
-    display: inline-block;
-    width: 120px;
-    vertical-align: middle
+  display: inline-block;
+  width: 120px;
+  vertical-align: middle;
 }
 
-
- table
-        {
-            width: 300px;
-            font: 17px Calibri;
-        }
-        table, th, tr, td 
-        {
-            border: solid 1px #DDD;
-            border-collapse: collapse;
-            padding: 2px 3px;
-            text-align: center;
-        }
+table {
+  width: 300px;
+  font: 17px Calibri;
+}
+table,
+th,
+tr,
+td {
+  border: solid 1px #ddd;
+  border-collapse: collapse;
+  padding: 2px 3px;
+  text-align: center;
+}
 
 .container {
-    color: white;
+  color: white;
+}
+
+button {
+text-align: center;
+}
+
+#body {
+    padding: 10px 10px 10px;
 }
