@@ -14,7 +14,7 @@ form.login {
 }
 
 #mainContainer {
-    background-color: #dfd9d9;
+    background-color: #444444;
 }
 
 
@@ -23,7 +23,7 @@ form.login {
 }
 
 #navContainer, footer, .navbar{
-    background-color: #dfd9d9;
+    background-color: #444444;
     max-width: 100%;
 }
 
@@ -61,24 +61,27 @@ select.form-control:focus {
 
 
 #navContainer, footer{
-    padding: 5px 10px;
-    background-color: #dfd9d9;
+    padding: 5px 5px;
+    background-color: #444444;
     max-width: 100%;
 }
 
 
 #footerContainer, #bodyContainer{
-    background-color:#dfd9d9;
+    background-color:#444444;
     max-width: 100%;
     text-align: center;
 }
 
 .jumbotron {
-
-    padding-bottom: 20px; 
+    padding-bottom: 10px; 
     text-align: center;
+    background-color: #202020;
 }
 
+.member-name {
+    color: rgb(0, 197, 204);
+}
 
 .icon {
     display: inline-block;
@@ -95,8 +98,8 @@ select.form-control:focus {
   padding-bottom: 100px;
   margin-left: auto;
   margin-right: auto;
-  background-color: #31c6e8;
-
+  background-color: #444444;
+  
 }  
 
 #inventoryTable {
@@ -108,7 +111,7 @@ select.form-control:focus {
 }
 
 .bg-custom {
-     background-color: lightgrey ;
+     background-color: 444444 ;
     color: black;
     padding-top: 30px;
     padding-bottom: 30px;
@@ -147,14 +150,14 @@ width: 100%;
 
 
 .navbar-brand {
-    padding: 10px;
+    padding: 10px 0px 0px 100px;
     font-size: 30px;
     font-family: 'Avantgarde', sans-serif;
-    color: rgb(0, 65, 51);
+    color: white;
 }
 
 hr.rounded {
-  border-top: 2px solid #bbb;
+  border-top: 1px solid white;
   border-radius: 1px;
 }
 
@@ -180,4 +183,6 @@ hr.rounded {
             text-align: center;
         }
 
-  
+.container {
+    color: white;
+}
