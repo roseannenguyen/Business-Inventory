@@ -18,18 +18,18 @@
         <div id="mainContainer" class="container">
             <section id="navContainer" class="container">
                 <div class="navbar navbar-expand-lg navbar-custom">
-                    <center><div class="logo">
-                        <img src="./stylesheets/logo.png" alt="logo" class="brand">
 
-                    </div></center>
                 </div>
             </section>
 
 
-            <hr class="rounded">
+            <nav class="navbar navbar-expand-lg">
+                <center>
+                    <div class="logo">
+                        <img src="./stylesheets/logo.png" alt="logo" class="brand">
 
-
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    </div>
+                </center>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
                     aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -97,7 +97,7 @@
                         <thead>
                             <tr>
                                 <th>Item Name</th>
-                                <th>Quanity</th>
+                                <th>Quantity</th>
                                 <th>Price ($)</th>
                                 <th>Description</th>
                                 <th class="hidden-print">Edit</th>
@@ -117,7 +117,8 @@
                 <p>
                     <input type="button" value="Create PDF" id="btPrint" onclick="createPDF()" />
                 </p>
-                <button onclick="exportTableToExcel('inventoryTableContainer', 'inventory-table')">Export Table Data To Excel File</button>
+                <button onclick="exportTableToExcel('inventoryTableContainer', 'inventory-table')">Export Table Data To
+                    Excel File</button>
             </div>
         </div>
     </div>
@@ -153,49 +154,49 @@
             win.print();    // PRINT THE CONTENTS.
         }
 
-    
-
-    function exportTableToExcel(tableID, filename = '') {
-
-        var sTable = $("#inventoryTableContainer").clone()
-
-        sTable.find(".hidden-print").hide();
-
-        var downloadLink;
-        var dataType = 'application/vnd.ms-excel';
-        var tableSelect = document.getElementById(tableID);
-
-        // var hideCol = document.getElementsByClassName("hidden-print")
-        // hideCol.hide()
-
-        var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
-   
 
 
-        // Specify file name
-        filename = filename ? filename + '.xls' : 'excel_data.xls';
+        function exportTableToExcel(tableID, filename = '') {
 
-        // Create download link element
-        downloadLink = document.createElement("a");
+            var sTable = $("#inventoryTableContainer").clone()
 
-        document.body.appendChild(downloadLink);
+            sTable.find(".hidden-print").hide();
 
-        if (navigator.msSaveOrOpenBlob) {
-            var blob = new Blob(['\ufeff', tableHTML], {
-                type: dataType
-            });
-            navigator.msSaveOrOpenBlob(blob, filename);
-        } else {
-            // Create a link to the file
-            downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+            var downloadLink;
+            var dataType = 'application/vnd.ms-excel';
+            var tableSelect = document.getElementById(tableID);
 
-            // Setting the file name
-            downloadLink.download = filename;
+            // var hideCol = document.getElementsByClassName("hidden-print")
+            // hideCol.hide()
 
-            //triggering the function
-            downloadLink.click();
+            var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+
+
+            // Specify file name
+            filename = filename ? filename + '.xls' : 'excel_data.xls';
+
+            // Create download link element
+            downloadLink = document.createElement("a");
+
+            document.body.appendChild(downloadLink);
+
+            if (navigator.msSaveOrOpenBlob) {
+                var blob = new Blob(['\ufeff', tableHTML], {
+                    type: dataType
+                });
+                navigator.msSaveOrOpenBlob(blob, filename);
+            } else {
+                // Create a link to the file
+                downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+                // Setting the file name
+                downloadLink.download = filename;
+
+                //triggering the function
+                downloadLink.click();
+            }
         }
-    }
     </script>
 
 
