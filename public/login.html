@@ -5,52 +5,36 @@
   <title>Business Inventory Login</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Calistoga&family=Lobster&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link href="stylesheets/style.css" rel="stylesheet">
 </head>
 
 <body>
-  <!-- <nav class="nav">
-      <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
-          <div class="container"></div>
-          <div class="logo"></div>
-        <header class="navbar-brand"><strong>Business Inventory Creator</strong></header> -->
-  <!-- <ul class="form-inline">
-          <a class="nav-link" href="contact.html">Contact</a>
-          <a class="nav-link" href="index.html">About Me</a>
-          <a class="nav-link" href="portfolio.html">My Portfolio</a>
-        </ul> -->
-  <!-- </nav> -->
 
-  <main id="mainContainer" class="container">
-    <section id="navContainer" class="container">
-      <div class="navbar navbar-expand-lg navbar-custom">
+  <div id="loginContainer">
+
+    <div id="mainContainer" class="container">
+      <section id="navContainer" class="container">
+        <div class="navbar navbar-expand-lg navbar-custom">
           <div class="logo">
-            <a class="navbar-brand">Business Inventory Creator</a>
-              <a class="nav-link" href="contact.html">Inventory</a>
-              <img src="./stylesheets/icon.png" alt="Logo" class="icon"></img>
+            <h2><img src="./stylesheets/logo.png" alt="logo" class="brand"> Welcome Back to JAR Business Inventory!</h2>
 
           </div>
         </div>
-      </div>
-      </nav>
+      </section>
 
-<hr class="rounded">
-</hr>
+
+      <hr class="rounded">
 
       <div class="container">
-        <div class="row">
+        <div class="row align-items-center my-3">
           <div class="col-lg-7">
-            <img class="img-fluid rounded mb-4 mb-lg-0" src="/" alt="LoginBusiness Photo">
+            <img class="img-fluid rounded mb-4 mb-lg-0" src="./stylesheets/krakenimages-376KN_ISplE-unsplash.jpg" alt="LoginBusiness Photo">
           </div>
 
           <div id="login-form" class="col-lg-5">
-            <h1 class="font-weight-light">Login Form</h1>
+            <h1 style="color:white">Login Form <img src="./stylesheets/icon.png" alt="Logo" class="icon"></h1>
             <form class="login">
               <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
@@ -60,7 +44,8 @@
                 <label for="exampleInputPassword1">Password</label>
                 <input type="password" class="form-control" id="password-input" placeholder="Password">
               </div>
-              <button type="submit" class="btn btn-primary btn-md">Login</button>
+              <button type="submit" style="background-color: #31e89f; color: black" class="btn btn-block btn-md">Login</button>
+              
             </form>
             <br />
             <p>Or sign up <a href="/">here</a></p>
@@ -68,21 +53,21 @@
 
         </div>
 
-        <hr class="rounded"></hr>
-    </section>
+        <hr class="rounded">
 
-    <footer id="footerContainer" class="container mx-auto">
-      <a>©2020-2021 , Inc.</a>
-      <br>Phoenix, Arizona</br>
-    </footer>
+        <footer id="footerContainer" class="container">
+          <p>
+            ©2021 JAR Inventory, Inc.<br>
+            Arizona</p>
+        </footer>
+
+      </div>
 
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
 
-  </main>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="js/login.js"></script>
-
+  </div>
 </body>
 
 </html>

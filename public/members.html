@@ -2,88 +2,178 @@
 <html lang="en">
 
 <head>
-  <title>Passport Authentication</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link href="stylesheets/style.css" rel="stylesheet">
+    <title>Passport Authentication</title>
+    <meta charset="UTF-8">
+    <meta name=”viewport” content=”width=device-width; initial-scale=1.0;">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Calistoga&family=Lobster&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="stylesheets/style.css" rel="stylesheet">
+
 
 </head>
 
 <body>
 
-  <nav class="nav">
-    <div class="navbar navbar-expand-lg navbar-custom fixed-top">
-      <div class="container-fluid">
-        <div class="logo">
-          <a class="navbar-brand">Wecome (Insert Business Name)</a>
+
+    <div id="mainContainer" class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-lignt">
+            <center>
+                <div class="logo">
+                    <img src="./stylesheets/logo.png" alt="logo" class="brand">
+
+                </div>
+            </center>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+                aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon my-toggler"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <form class="form-inline my-2 my-lg-0 float-right">
+
+
+                </form>
+                <ul class="navbar-nav mt-2 mt-lg-0">
+
+                    <li><a class="nav-item active" style="color:#31e89f; font-size:25px;" href="/logout">
+                            Logout
+                        </a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="main"><br>
+       <div class="img-container"></div>
+            <br><h1 style="color: white; font-size: 30px;"><span class="member-name"></span><br> Business Inventory
+            </h1> <br>
+            <p class="lead"><i>Take your business to the next level.</i></p>
+
         </div>
-        <a class="navbar-brand" href="/logout">
-          Logout
-        </a>
-      </div>
+        <div class="row h-100 align-items-center justify-content-center text-center">
+            <div class="col-lg-12 align-self-end">
+                <div class="form-header">
+                    <h2 id="add"> Track Your Inventory</h2>
+                    <p>Fill out the form with the item name, quanitity, price, and description to add to the table
+                        below! <br>Click the PDF button to print the inventory list. </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container h-100">
+            <div class="row h-100 align-items-center justify-content-center text-center">
+                <div class="col-lg-10 align-self-end">
+
+
+
+                    <div class="form-container rounded bg-custom">
+                        <form class="input">
+                            <label> Item Name: <input type="text" id="item" name="item" size="30"></label>
+                            <label> Quantity: <input type="number" id="quantity" name="quantity"></label>
+                            <label> Price: $<input type="number" id="price" name="price"></label>
+                            <label>Description: <br><textarea type="text" id="body" name="body"
+                                    placeholder="Add notes or description of item"></textarea></label>
+                            <button type="button" class="btn btn-dark btn-block btn-warning" value="Add" id="save-edit">
+                                Save
+                            </button>
+                            <button type="button" style="background-color:#31e89f;" class="btn btn-block" value="Add"
+                                id="submit"> Add
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <hr class="rounded">
+           
+        <div id="inventoryTableContainer"
+            class="row h-100 align-items-center justify-content-center text-center container-fluid">
+            <div class="col-lg-12 col-md-10 col-sm-auto">
+
+                <table class="table table table-dark table-bordered table-hover">
+                    <h2 id="tableHeader"><span class="member-name"></span> Inventory</h2>
+
+
+                    <thead>
+                        <tr>
+                            <th>Item Name</th>
+                            <th>Quantity</th>
+                            <th>Price ($)</th>
+                            <th>Description</th>
+                            <th class="hidden-print">Edit</th>
+                            <th class="hidden-print">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="inventoryTable">
+                        </tr>
+                    </tbody>
+                </table>
+             
+            </div>
+         
+        </div>
+        <input style="background-color:#31e8e8;" class="btn btn-block float-end" id="PDFButton" value="Click Here to Create PDF"
+            onclick="createPDF()">
+<hr class="rounded">
+
+<footer id="footerContainer" class="container">
+    <p>
+        ©2021 JAR Inventory, Inc.<br>
+        Arizona</p>
+</footer>
     </div>
-  </nav>
 
-  <div class="jumbotron jumbotron-fluid">
-    <div class="container-fluid">
-      <h1 class="display-4">(Insert Business Name) Inventory Management</h1>
-      <p class="lead">Manage your company.</p>
-    </div>
-  </div>
+    <script>
+        function createPDF() {
 
+            var sTable = $("#inventoryTableContainer").clone()
 
-  <div id="inventory-table" class="row align-items-center">
-    <div class="col-md-4">
+            sTable.find(".hidden-print").hide();
 
-      <h2 id="add"> Track Your Inventory</h2>
+            var style = "<style>";
+            style = style + "table {width: 100%;font: 17px Calibri;}";
+            style = style + "table, th, td {border: solid 1px #DDD; border-collapse: collapse;";
+            style = style + "padding: 2px 3px;text-align: center;}";
+            style = style + "</style>";
 
-      <div class="container-fluid rounded bg-custom">
-        <form class="input">
-          <label> Item Name: <input type="text" id="item" name="item" size="30"></label>
-          <label> Quantity: <input type="number" id="quantity" name="quantity" ></label>
-          <label> Price: $<input type="number" id="price" name="price" ></label>
-          <label>Description: <br><textarea type="text" id="body" name="body" placeholder="Add notes or description of item"></textarea></label>
-          <button type="button" class="btn btn-dark btn-block" value="Add" id="submit"> Add </button>
-        </form>
-      </div>
-    </div>
+            var win = window.open('', '', 'height=700,width=700');
 
+            win.document.write('<html><head>');
+            win.document.write('  <center><img src="../stylesheets/logo.png" width="90" height="100"></center>')  
+            win.document.write('<title>Business Inventory</title>');
+            win.document.write(style);
+            win.document.write('</head>');
+            win.document.write('<body>');
+            win.document.write(sTable.html());
 
-    <div class="col-md-8">
+            win.document.write('</body></html>');
 
-      <table id="table" class="table table-bordered table-hover">
-        <thead>
-        </thead>
-        <tbody>
-          <tr>
-            <!-- <th id="main-id">ID</th> -->
-            <th>Item</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Description</th>
-          </tr>
-
-        </tbody>
-      </table>
-    </div>
-  </div>
+            win.document.close();
+            win.print();
+        }
+    </script>
 
 
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/members.js"></script>
+    <script type="text/javascript" src="js/todo.js"></script>
 
-  <script type="text/javascript" src="js/members.js"></script>
 
 </body>
 

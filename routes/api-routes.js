@@ -1,7 +1,8 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
-var userId;
+const { QueryTypes } = require('sequelize');
+
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -23,6 +24,7 @@ module.exports = function(app) {
   // otherwise send back an error
   app.post("/api/signup", (req, res) => {
     db.User.create({
+      business_name: req.body.name,
       email: req.body.email,
       password: req.body.password
     })
@@ -50,27 +52,30 @@ module.exports = function(app) {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
+        business_name: req.user.business_name,
         email: req.user.email,
         id: req.user.id
       });
     }
   });
 
-  app.get("/api/items", function(req,res) {
-    var query = {};
-    if (req.query.user_id) {
-      query.UserId = req.query.user_id;
-    }
-  
-  db.Item.findAll({
-    where: query,
-    include: [db.User]
-  }).then(function(dbItem) {
-    res.json(dbItem)
+  app.get("/api/items", async function(req, res) {
+    await db.sequelize.query(`SELECT item.id, item.name, item.quantity, item.price, item.body
+    FROM item
+    INNER JOIN inventory
+    ON item.id = inventory.ItemId
+    INNER JOIN user
+    ON user.id = inventory.UserId
+    WHERE user.id = ${req.user.id}`, { type: QueryTypes.SELECT }).then((results) => {
+      res.json(results)
+    }).catch(err => {
+      console.log(err)
+    })
   });
-  });
+    
+   
   
-  app.post("/api/items", async(req, res) => {
+  app.post("/api/items", async (req, res) => {
     db.Item.create({
       name: req.body.name,
       quantity: req.body.quantity,
@@ -80,6 +85,8 @@ module.exports = function(app) {
       db.Inventory.create({
         UserId: req.user.id,
         ItemId: data.id
+      }).then(() => {
+        res.send();
       });
       console.log(data.id);
       console.log(req.user.id);
@@ -98,6 +105,42 @@ module.exports = function(app) {
     // }catch(err){
     //   console.log(err)
     // }
-  })
+  });
+
+  app.get("/api/items/:id", function (req, res) {
+    db.Item.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function (data) {
+      res.json(data);
+    });
+  });
+
+  // save
+  app.put("/api/items/:id", function (req, res) {
+    console.log('updating on backend', req.params.id, req.body)
+    db.Item.update(
+      req.body,
+      {
+        where: {
+          id: req.params.id
+        }
+      }).then(function (data) {
+        res.json(data);
+      });
+  });
+
+  app.delete("/api/items/:id", function(req, res) {
+    db.Item.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(data) {
+      res.json(data);
+    });
+  });
 };
+
+
 
