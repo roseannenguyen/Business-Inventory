@@ -17,211 +17,178 @@
 
 <body>
 
-    <div id="membersContainer">
-        <div id="mainContainer" class="container">
-            <section id="navContainer" class="container">
-                <div class="navbar navbar-expand-lg navbar-custom">
 
-                </div>
-            </section>
+    <div id="mainContainer" class="container">
+        <section id="navContainer" class="container">
+            <div class="navbar navbar-expand-lg navbar-custom">
 
-
-            <nav class="navbar navbar-expand-lg">
-                <center>
-                    <div class="logo">
-                        <img src="./stylesheets/logo.png" alt="logo" class="brand">
-
-                    </div>
-                </center>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
-                    aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                    <form class="form-inline my-2 my-lg-0 float-right">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                        <!-- <a class="navbar-brand" href="#"><span class="member-name"></span></a> -->
-
-                    </form>
-                    <ul class="navbar-nav mt-2 mt-lg-0">
-
-                        <li><a class="nav-item active" style="color:white" href="/logout">
-                                Logout
-                            </a></li>
-                    </ul>
-                </div>
-            </nav>
-
-
-            <div class="jumbotron jumbotron-fluid">
-                <div class="container h-100">
-                    <h1 class="display-4"><span class="member-name"></span><br>Inventory Management</h1>
-                    <p class="lead">Manage your company.</p>
-                </div>
             </div>
+        </section>
 
 
+        <nav class="navbar navbar-expand-lg">
+            <center>
+                <div class="logo">
+                    <img src="./stylesheets/logo.png" alt="logo" class="brand">
+
+                </div>
+            </center>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+                aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <form class="form-inline my-2 my-lg-0 float-right">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <!-- <a class="navbar-brand" href="#"><span class="member-name"></span></a> -->
+
+                </form>
+                <ul class="navbar-nav mt-2 mt-lg-0">
+
+                    <li><a class="nav-item active" style="color:white" href="/logout">
+                            Logout
+                        </a></li>
+                </ul>
+            </div>
+        </nav>
+
+
+        <div class="jumbotron jumbotron-fluid">
             <div class="container h-100">
-                <div class="row h-100 align-items-center justify-content-center text-center">
-                    <div class="col-lg-10 align-self-end">
-
-
-
-                        <div class="container rounded bg-custom">
-                            <h2 id="add"> Track Your Inventory</h2>
-                            <form class="input">
-                                <label> Item Name: <input type="text" id="item" name="item" size="30"></label>
-                                <label> Quantity: <input type="number" id="quantity" name="quantity"></label>
-                                <label> Price: $<input type="number" id="price" name="price"></label>
-                                <label>Description: <br><textarea type="text" id="body" name="body"
-                                        placeholder="Add notes or description of item"></textarea></label>
-                                <button type="button" class="btn btn-dark btn-block btn-warning" value="Add"
-                                    id="save-edit">
-                                    Save
-                                </button>
-                                <button type="button" class="btn btn-dark btn-block" value="Add" id="submit"> Add
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <hr class="rounded">
-
-            <div class="col-md">
-                <div id="inventoryTableContainer"
-                    class="row h-100 align-items-center justify-content-center text-center">
-                    <table class="table table table-dark table-bordered table-hover">
-                        <h2 id="tableHeader"><span class="member-name"></span> Inventory</h2>
-                        <thead>
-                            <tr>
-                                <th>Item Name</th>
-                                <th>Quantity</th>
-                                <th>Price ($)</th>
-                                <th>Description</th>
-                                <th class="hidden-print">Edit</th>
-                                <th class="hidden-print">Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr id="inventoryTable">
-
-                            </tr>
-                        </tbody>
-
-                    </table>
-
-                </div>
-
-            <div class="col-md">
-                <div class="row h-100 align-items-center justify-content-center text-center">
-                    <p>
-                        <input type="button" value="Create PDF" class="btPrint" onclick="createPDF()" />
-                    </p>
-                </div>
-            </div>
-                        <div class="col-md">
-                <div class="row h-100 align-items-center justify-content-center text-center">
-
-                    <button onclick="exportTableToExcel('inventoryTableContainer', 'inventory-table')">Export Table Data
-                        To
-                        Excel File</button>
-                </div>
+                <h1 class="display-4"><span class="member-name"></span><br>Inventory Management</h1>
+                <p class="lead">Manage your company.</p>
             </div>
         </div>
 
 
-        <script>
-            function createPDF() {
-
-                var sTable = $("#inventoryTableContainer").clone()
-
-                sTable.find(".hidden-print").hide();
-
-                var style = "<style>";
-                style = style + "table {width: 100%;font: 17px Calibri;}";
-                style = style + "table, th, td {border: solid 1px #DDD; border-collapse: collapse;";
-                style = style + "padding: 2px 3px;text-align: center;}";
-                style = style + "</style>";
-
-                // CREATE A WINDOW OBJECT.
-                var win = window.open('', '', 'height=700,width=700');
-
-                win.document.write('<html><head>');
-                win.document.write('<title>Inventory</title>');   // <title> FOR PDF HEADER.
-                win.document.write(style);          // ADD STYLE INSIDE THE HEAD TAG.
-                win.document.write('</head>');
-                win.document.write('<body>');
-                win.document.write(sTable.html());         // THE TABLE CONTENTS INSIDE THE BODY TAG.
-
-                win.document.write('</body></html>');
-
-                win.document.close(); 	// CLOSE THE CURRENT WINDOW.
-
-                win.print();    // PRINT THE CONTENTS.
-            }
+        <div class="container h-100">
+            <div class="row h-100 align-items-center justify-content-center text-center">
+                <div class="col-lg-10 align-self-end">
 
 
 
-            function exportTableToExcel(tableID, filename = '') {
+                    <div class="container rounded bg-custom">
+                        <h2 id="add"> Track Your Inventory</h2>
+                        <form class="input">
+                            <label> Item Name: <input type="text" id="item" name="item" size="30"></label>
+                            <label> Quantity: <input type="number" id="quantity" name="quantity"></label>
+                            <label> Price: $<input type="number" id="price" name="price"></label>
+                            <label>Description: <br><textarea type="text" id="body" name="body"
+                                    placeholder="Add notes or description of item"></textarea></label>
+                            <button type="button" class="btn btn-dark btn-block btn-warning" value="Add" id="save-edit">
+                                Save
+                            </button>
+                            <button type="button" class="btn btn-dark btn-block" value="Add" id="submit"> Add
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                var sTable = $("#inventoryTableContainer").clone()
+        <hr class="rounded">
+        <div id="inventoryTableContainer" class="row h-100 align-items-center justify-content-center text-center">
+            <div class="col-lg-12 col-md-6 col-sm-6">
 
-                sTable.find(".hidden-print").hide();
-
-                var downloadLink;
-                var dataType = 'application/vnd.ms-excel';
-                var tableSelect = document.getElementById(tableID);
-
-                // var hideCol = document.getElementsByClassName("hidden-print")
-                // hideCol.hide()
-
-                var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
-
-
-
-                // Specify file name
-                filename = filename ? filename + '.xls' : 'excel_data.xls';
-
-                // Create download link element
-                downloadLink = document.createElement("a");
-
-                document.body.appendChild(downloadLink);
-
-                if (navigator.msSaveOrOpenBlob) {
-                    var blob = new Blob(['\ufeff', tableHTML], {
-                        type: dataType
-                    });
-                    navigator.msSaveOrOpenBlob(blob, filename);
-                } else {
-                    // Create a link to the file
-                    downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
-
-                    // Setting the file name
-                    downloadLink.download = filename;
-
-                    //triggering the function
-                    downloadLink.click();
-                }
-            }
-        </script>
+                <table class="table table table-dark table-bordered table-hover">
+                    <h2 id="tableHeader"><span class="member-name"></span> Inventory</h2>
 
 
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                    <thead>
+                        <tr>
+                            <th>Item Name</th>
+                            <th>Quantity</th>
+                            <th>Price ($)</th>
+                            <th>Description</th>
+                            <th class="hidden-print">Edit</th>
+                            <th class="hidden-print">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="inventoryTable">
 
-        <script type="text/javascript" src="js/members.js"></script>
+                        </tr>
+                    </tbody>
+
+                </table>
+                <input class="btn btn-light justify-content-center" id="PDFButton" value="Create PDF"
+                    onclick="createPDF()" />
+            </div>
+
+
+        </div>
+        <div class="row h-100 align-items-center justify-content-center text-center">
+            <div class="col-lg-12 col-md-6 col-sm-6">
+                <div class="to-do-container">
+                    <h1>TODO LIST</h1>
+                    <h3>Add Item</h3>
+                    <p>
+                        <input id="new-task" type="text"><button>Add</button>
+                    </p>
+        
+                    <h3>Todo</h3>
+                    <ul id="incomplete-tasks">
+                        <li><input type="checkbox"><label>Pay Bills</label><input type="text"><button
+                                class="edit">Edit</button><button class="delete">Delete</button></li>
+                        <li><input type="checkbox"><label>Go Shopping</label><input type="text" value="Go Shopping"><button
+                                class="edit">Edit</button><button class="delete">Delete</button></li>
+                    </ul>
+        
+                    <h3>Completed</h3>
+                    <ul id="completed-tasks">
+                        <li><input type="checkbox" checked><label>See the Doctor</label><input type="text"><button
+                                class="edit">Edit</button><button class="delete">Delete</button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script>
+        function createPDF() {
+
+            var sTable = $("#inventoryTableContainer").clone()
+
+            sTable.find(".hidden-print").hide();
+
+            var style = "<style>";
+            style = style + "table {width: 100%;font: 17px Calibri;}";
+            style = style + "table, th, td {border: solid 1px #DDD; border-collapse: collapse;";
+            style = style + "padding: 2px 3px;text-align: center;}";
+            style = style + "</style>";
+
+            var win = window.open('', '', 'height=700,width=700');
+
+            win.document.write('<html><head>');
+            win.document.write('<title>Business Inventory</title>');
+            win.document.write(style);
+            win.document.write('</head>');
+            win.document.write('<body>');
+            win.document.write(sTable.html());
+
+            win.document.write('</body></html>');
+
+            win.document.close();
+            win.print();
+        }
+    </script>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="js/members.js"></script>
 
 
 </body>
