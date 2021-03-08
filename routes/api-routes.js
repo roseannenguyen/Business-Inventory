@@ -1,8 +1,7 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
-const { QueryTypes } = require('sequelize');
-
+const { QueryTypes } = require("sequelize");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -59,80 +58,79 @@ module.exports = function(app) {
     }
   });
 
-  app.get("/api/items", async function(req, res) {
-    await db.sequelize.query(`SELECT item.id, item.name, item.quantity, item.price, item.body
+  app.get("/api/items", async (req, res) => {
+    await db.sequelize
+      .query(
+        `SELECT item.id, item.name, item.quantity, item.price, item.body
     FROM item
     INNER JOIN inventory
     ON item.id = inventory.ItemId
     INNER JOIN user
     ON user.id = inventory.UserId
-    WHERE user.id = ${req.user.id}`, { type: QueryTypes.SELECT }).then((results) => {
-      res.json(results)
-    }).catch(err => {
-      console.log(err)
-    })
+    WHERE user.id = ${req.user.id}`,
+        { type: QueryTypes.SELECT }
+      )
+      .then(results => {
+        res.json(results);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   });
-    
-   
-  
+
   app.post("/api/items", async (req, res) => {
     db.Item.create({
       name: req.body.name,
       quantity: req.body.quantity,
       price: req.body.price,
-      body: req.body.body,
-    }) .then((data) => {
-      db.Inventory.create({
-        UserId: req.user.id,
-        ItemId: data.id
-      }).then(() => {
-        res.send();
-      });
-      console.log(data.id);
-      console.log(req.user.id);
-     console.log("Item added!")
+      body: req.body.body
     })
-    .catch(err => {
-      console.log(err);
-      res.status(401).json(err);
-    });
-    
+      .then(data => {
+        db.Inventory.create({
+          UserId: req.user.id,
+          ItemId: data.id
+        }).then(() => {
+          res.send();
+        });
+        console.log(data.id);
+        console.log(req.user.id);
+        console.log("Item added!");
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(401).json(err);
+      });
   });
 
-  app.get("/api/items/:id", function (req, res) {
+  app.get("/api/items/:id", (req, res) => {
     db.Item.findOne({
       where: {
         id: req.params.id
       }
-    }).then(function (data) {
+    }).then(data => {
       res.json(data);
     });
   });
 
   // save
-  app.put("/api/items/:id", function (req, res) {
-    console.log('updating on backend', req.params.id, req.body)
-    db.Item.update(
-      req.body,
-      {
-        where: {
-          id: req.params.id
-        }
-      }).then(function (data) {
-        res.json(data);
-      });
+  app.put("/api/items/:id", (req, res) => {
+    console.log("updating on backend", req.params.id, req.body);
+    db.Item.update(req.body, {
+      where: {
+        id: req.params.id
+      }
+    }).then(data => {
+      res.json(data);
+    });
   });
 
-  app.delete("/api/items/:id", function(req, res) {
+  app.delete("/api/items/:id", (req, res) => {
     db.Item.destroy({
       where: {
         id: req.params.id
       }
-    }).then(function(data) {
+    }).then(data => {
       res.json(data);
     });
   });
 };
-
-
-
