@@ -15,11 +15,12 @@
 
 
   ## Description:
-JAR Inventory is a business tracking management application that allows any company to track product. Businesses are able to add, edit, and delete inventory items in the table. There is also a PDF export option to be able to save and print the inventory table.
+JAR Inventory is a business tracking management application that allows any company to track product. Businesses are able to add, edit, and delete inventory items in the table. There is also a PDF export option to be able to save and print the inventory table. [Check out the pdf!](https://github.com/roseannenguyen/Business-Inventory/blob/main/public/stylesheets/pdf-example.pdf)
 
 ![Screenshot of header](./public/stylesheets/header-img.PNG)
 ![Screenshot of form](./public/stylesheets/form-img.PNG))
-![Screenshot of table](./public/stylesheets/table-img.PNG))
+![Screenshot of table](./public/stylesheets/table-img.PNG)
+
 
 
 <a name="userstory"></a>
