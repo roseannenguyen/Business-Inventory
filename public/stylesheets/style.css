@@ -19,6 +19,7 @@ form.login {
 
 
 
+
 #footerContainer {
   text-align: center;
 }
@@ -27,7 +28,7 @@ form.login {
 footer,
 .navbar {
   background-color: #444444;
-  max-width: 100%;
+  max-width: 150%;
 }
 
 input[type="text"],
@@ -38,12 +39,14 @@ select.form-control {
   -webkit-box-shadow: none;
   box-shadow: none;
   border-radius: 0;
+  color: white;
 }
 
 input[type="text"]:focus,
 select.form-control:focus {
   -webkit-box-shadow: none;
   box-shadow: none;
+    color: white;
 }
 
 input[type="number"],
@@ -54,19 +57,21 @@ select.form-control {
   -webkit-box-shadow: none;
   box-shadow: none;
   border-radius: 0;
+    color: white;
 }
 
 input[type="number"]:focus,
 select.form-control:focus {
   -webkit-box-shadow: none;
   box-shadow: none;
+    color: white;
 }
 
 #navContainer,
 footer {
   padding: 5px 5px;
   background-color: #444444;
-  max-width: 100%;
+  max-width: 150%;
 }
 
 #footerContainer,
@@ -76,14 +81,12 @@ footer {
   text-align: center;
 }
 
-.jumbotron {
-  padding-bottom: 10px;
-  text-align: center;
-  background-color: #202020;
-}
+
 
 .member-name {
   color: rgb(0, 197, 204);
+
+
 }
 
 .icon {
@@ -113,7 +116,7 @@ footer {
 }
 
 .bg-custom {
-  background-color: 444444;
+  background-color: #444444;
   color: black;
   padding-top: 30px;
   padding-bottom: 30px;
@@ -182,8 +185,9 @@ td {
   text-align: center;
 }
 
-.container {
+.form-container {
   color: white;
+  font-size: 20px;
 }
 
 button {
@@ -193,156 +197,35 @@ text-align: center;
 #body {
     padding: 10px 10px 10px;
 }
-.to-do-container {
-	display: block;
-	width: 800px;
-	margin: 10px auto 100px;
-	background-color:#fff;
-	padding:0px 10px 10px 10px;
-	border-radius:10px
+
+.navbar-light .navbar-toggler-icon {
+  background-color: white;
+  color: white;
+  border-color: white;
 }
 
-h1 {
-	text-align:center;
-	padding-top:10px;
-	margin-bottom:0px;
+.form-header {
+  background-color: #31e89f;
   color: black;
-}
-
-ul {
-	margin: 0;
-	padding: 0;
-}
-
-li * {
-	float: left;
-}
-
-li,
-h3 {
-	clear: both;
-	list-style: none;
-}
-
-input,
-button {
-	outline: none;
-}
-
-button {
-	background: none;
-	border: 0px;
-	color: #888;
-	font-size: 15px;
-	width: 100px;
-	margin: 10px 0 0;
-	font-family: Lato, sans-serif;
-	cursor: pointer;
-}
-
-button:hover {
-	color: #333;
+ font-size:20px;
 }
 
 
-/* Heading */
-
-h3,
-label[for='new-task'] {
-	color: #333;
-	font-weight: 700;
-	font-size: 15px;
-	border-bottom: 2px solid #333;
-	padding: 20px 0 10px;
-	margin: 0;
-	text-transform: uppercase;
+.main {
+  height: 50vh;
+}
+.img-container {
+  width: 70%;
+  height: 80%;
+  background-color: lightgray;
+  float: right;
+  background: url('campaign-creators-774sCXD0dDU-unsplash-edit.PNG') no-repeat center right/ cover;
+  -webkit-shape-outside: polygon(25% 0, 100% 0, 100% 100%, 0 100%);
+  shape-outside: polygon(25% 0, 100% 0, 100% 100%, 0 100%);
+  -webkit-clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%);
+  clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%);
 }
 
-input[type="text"] {
-	margin: 0;
-	font-size: 18px;
-	line-height: 18px;
-	height: 18px;
-	padding: 10px;
-	border: 1px solid #ddd;
-	background: #fff;
-	border-radius: 6px;
-	font-family: Lato, sans-serif;
-	color: black;
-}
-
-input[type="text"]:focus {
-	color: #333;
-}
-
-
-/* New Task */
-
-label[for='new-task'] {
-	display: block;
-	margin: 0 0 20px;
-  color: black;
-}
-
-input#new-task {
-	float: left;
-	width: 600px;
-}
-
-p > button:hover {
-	color: #0FC57C;
-}
-
-
-/* Task list */
-
-li {
-	overflow: hidden;
-	padding: 20px 0;
-	border-bottom: 1px solid #eee;
-}
-
-li > input[type="checkbox"] {
-	margin: 0 10px;
-	position: relative;
-	top: 15px;
-}
-
-li > label {
-	font-size: 18px;
-	line-height: 40px;
-	width: 500px;
-	padding: 0 0 0 11px;
-  color: black;
-}
-
-li > input[type="text"] {
-	width: 500px;
-}
-
-li > .delete:hover {
-	color: #CF2323;
-}
-
-
-/* Completed */
-
-#completed-tasks label {
-	text-decoration: line-through;
-	color: #888;
-}
-
-
-/* Edit Task */
-
-ul li input[type=text] {
-	display: none;
-}
-
-ul li.editMode input[type=text] {
-	display: block;
-}
-
-ul li.editMode label {
-	display: none;
+body {
+  font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
 }
