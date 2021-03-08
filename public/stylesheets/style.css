@@ -226,6 +226,3 @@ text-align: center;
   clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%);
 }
 
-body {
-  font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
-}
