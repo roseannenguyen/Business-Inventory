@@ -7,9 +7,9 @@ $(document).ready(function () {
   const invTable = $("tbody");
 
 
-  $('#submit').show();
-  $('#save-edit').hide()
-  $('#tableHeader').show()
+  $("#submit").show();
+  $("#save-edit").hide()
+  $("#tableHeader").show()
 
   function getItems() {
     invTable.empty();
@@ -33,7 +33,7 @@ $(document).ready(function () {
     console.log(data)
     newTr.append("<td>" + data.name + "</td>");
     newTr.append("<td>" + data.quantity + "</td>");
-    newTr.append("<td>" +"$"+ data.price + "</td>");
+    newTr.append("<td>" + "$" + data.price + "</td>");
     newTr.append("<td>" + data.body + "</td>");
     newTr.append("<td class='hidden-print'><a style='cursor:pointer;color:green' role='button' class ='edit-item'>Edit Item</a></td>");
     newTr.append("<td class='hidden-print'><a style='cursor:pointer;color:red' role='button' class ='delete-item'>Delete Item</a></td>");
@@ -84,13 +84,13 @@ $(document).ready(function () {
   }
 
 
-  // This function figures out which post we want to edit and takes it to the appropriate url
+
   function handlePostEdit() {
     let currentItems = $(this)
       .parent()
       .parent()
       .data("id");
-    // window.location.href = "/api/items/?id=" + currentItems;
+
     editPost(currentItems);
   }
 
@@ -138,9 +138,9 @@ $(document).ready(function () {
     itemDescription.val('')
   }
 
- 
+
   getItems();
 
-  
+
 });
 
