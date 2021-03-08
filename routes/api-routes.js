@@ -97,14 +97,6 @@ module.exports = function(app) {
       res.status(401).json(err);
     });
     
-    // const { name, quantity, price, body, UserId } = req.body
-
-    // try{
-    //   const item = await db.Item.create({ name, quantity, price, body, UserId })
-    //   return res.json(item) 
-    // }catch(err){
-    //   console.log(err)
-    // }
   });
 
   app.get("/api/items/:id", function (req, res) {
